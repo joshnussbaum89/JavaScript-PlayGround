@@ -51,12 +51,48 @@ function decode(string) {
     .replace(/5/g, 'u');
 }
 
+
+
+/**
+ * Rock, Paper, Scissors
+ @param {2arrays} games
+ @return {string} return the name of the winner
+ ***************************************************************/
+
+function calculateScore(games) {
+  let abigailWins = 0;
+  let bensonWins = 0;
+  let tiedRounds = 0;
+
+  games.forEach(game => {
+    if (game[0] === game[1]) {
+      tiedRounds += 1;
+    } else if (game[0] === 'R' && game[1] === 'S') {
+      abigailWins += 1;
+    } else if (game[0] === 'S' && game[1] === 'P') {
+      abigailWins += 1;
+    } else if (game[0] === 'P' && game[1] === 'R') {
+      abigailWins += 1;
+    } else if (game[1] === 'R' && game[0] === 'S') {
+      bensonWins += 1;
+    } else if (game[1] === 'S' && game[0] === 'P') {
+      bensonWins += 1;
+    } else if (game[1] === 'P' && game[0] === 'R') {
+      bensonWins += 1;
+    }
+  })
+
+  return abigailWins > bensonWins ? "Abigail" : abigailWins < bensonWins ? "Benson" : "Tie";
+}
+
 // Test function: insert test functions here
 function test() {
-  encode('hello'); // 'h2ll4'
-  encode('How are you today?'); // 'H4w 1r2 y45 t4d1y?'
-  encode('This is an encoding test.'); // 'Th3s 3s 1n 2nc4d3ng t2st.'
-  decode('h2ll4'); // 'hello'
+  calculateScore([["R", "P"], ["R", "S"], ["S", "P"]]) // ➞ "Abigail"
+  calculateScore([["R", "R"], ["S", "S"]]) // ➞ "Tie"
+  calculateScore([["S", "R"], ["R", "S"], ["R", "R"]]) // ➞ "Tie"
+  calculateScore([['S', 'R'], ['P', 'R']]) // "Tie"
+  calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R', 'R']]) // "Abigail" 
+  calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]) // "Benson"
 }
 
 test();
