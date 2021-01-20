@@ -85,14 +85,25 @@ function calculateScore(games) {
   return abigailWins > bensonWins ? "Abigail" : abigailWins < bensonWins ? "Benson" : "Tie";
 }
 
+
+
+/**
+ * Return letters only from a string
+ @param {string} letters/numbers/symbols
+ @return {string} return 'decoded' string ex/ "R!=:~0o0./c&}9k`60=y" => "Rocky"
+ ***************************************************************/
+
+const lettersOnly = str => str.replace(/[^A-Za-z]/g, "");
+
+
+
+
+
 // Test function: insert test functions here
 function test() {
-  calculateScore([["R", "P"], ["R", "S"], ["S", "P"]]) // ➞ "Abigail"
-  calculateScore([["R", "R"], ["S", "S"]]) // ➞ "Tie"
-  calculateScore([["S", "R"], ["R", "S"], ["R", "R"]]) // ➞ "Tie"
-  calculateScore([['S', 'R'], ['P', 'R']]) // "Tie"
-  calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R', 'R']]) // "Abigail" 
-  calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]) // "Benson"
+  lettersOnly("R!=:~0o0./c&}9k`60=y") // ➞ "Rocky"
+  lettersOnly("^,]%4B|@56a![0{2m>b1&4i4") // ➞ "Bambi"
+  lettersOnly("^U)6$22>8p).") // ➞ "Up"
 }
 
 test();
