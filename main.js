@@ -97,13 +97,26 @@ const lettersOnly = str => str.replace(/[^A-Za-z]/g, "");
 
 
 
+/**
+ * Sort Numbers in descending order
+ @param {number}
+ @return {number} return reversed number
+ ***************************************************************/
+
+const sortDescending = num => {
+  +num.toString()
+    .split('')
+    .sort()
+    .reverse()
+    .join('');
+}
 
 
 // Test function: insert test functions here
 function test() {
-  lettersOnly("R!=:~0o0./c&}9k`60=y") // ➞ "Rocky"
-  lettersOnly("^,]%4B|@56a![0{2m>b1&4i4") // ➞ "Bambi"
-  lettersOnly("^U)6$22>8p).") // ➞ "Up"
+  sortDescending(123) // ➞ 321
+  sortDescending(1254859723) // ➞ 9875543221
+  sortDescending(73065) // ➞ 76530
 }
 
 test();
