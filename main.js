@@ -112,11 +112,24 @@ const sortDescending = num => {
 }
 
 
+
+/**
+ * Reverse the Case
+ @param {string}
+ @return {string} return reversed case => lower case = uppercase and vice versa
+ ***************************************************************/
+
+const reverseCase = (str) =>
+  str.split('')
+    .map((letter) => letter === letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase())
+    .join('');
+
+
 // Test function: insert test functions here
 function test() {
-  sortDescending(123) // ➞ 321
-  sortDescending(1254859723) // ➞ 9875543221
-  sortDescending(73065) // ➞ 76530
+  reverseCase("Happy Birthday") // ➞ "hAPPY bIRTHDAY"
+  reverseCase("MANY THANKS") // ➞ "many thanks"
+  reverseCase("sPoNtAnEoUs") // ➞ "SpOnTaNeOuS"
 }
 
 test();
