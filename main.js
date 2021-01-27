@@ -125,11 +125,29 @@ const reverseCase = (str) =>
     .join('');
 
 
+
+/**
+ * Hiding the Card Number
+ @param {string} Card# - Card number as a string
+ @returns {string} Same string with only the last four digits showing, replacing everything else with asterisks
+ ***************************************************************/
+
+function cardHide(card) {
+  const hidden = "*";
+  const slicedCardNum = card.slice(-4);
+  const numOfAsterisks = card.length - 4;
+  const asterisks = hidden.repeat(numOfAsterisks);
+
+  return `${asterisks}${slicedCardNum}`;
+}
+
+
 // Test function: insert test functions here
 function test() {
-  reverseCase("Happy Birthday") // ➞ "hAPPY bIRTHDAY"
-  reverseCase("MANY THANKS") // ➞ "many thanks"
-  reverseCase("sPoNtAnEoUs") // ➞ "SpOnTaNeOuS"
+  cardHide("1234123456785678") // ➞ "************5678"
+
+  cardHide("8754456321113213") // ➞ "************3213"
+  cardHide("35123413355523") // ➞ "**********5523"
 }
 
 test();
