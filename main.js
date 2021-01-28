@@ -142,12 +142,33 @@ function cardHide(card) {
 }
 
 
+
+/**
+ * Finding Nemo
+ @param {string} Sentence - Sentence thats either includes or does not include 'Nemo'
+ @returns {string} - Message that tells user what index 'Nemo' is at
+ ***************************************************************/
+
+function findNemo(sentence) {
+  const nemoIndex = sentence.split(' ').indexOf('Nemo') + 1;
+  let message = '';
+
+  (sentence.search('nemo') && nemoIndex !== 0)
+    ? message = `I found Nemo at ${nemoIndex}!`
+    : message = "I can't find Nemo :(";
+
+  return message;
+}
+
+
+
 // Test function: insert test functions here
 function test() {
-  cardHide("1234123456785678") // ➞ "************5678"
-
-  cardHide("8754456321113213") // ➞ "************3213"
-  cardHide("35123413355523") // ➞ "**********5523"
+  findNemo("I am finding Nemo !") // ➞ "I found Nemo at 4!"
+  findNemo("Nemo is me") // ➞ "I found Nemo at 1!"
+  findNemo("I Nemo am") // ➞ "I found Nemo at 2!"
+  findNemo("No fish here...")
+  findNemo("Is it Nemos, Nemona, Nemoor or Garfield?") // "I can't find Nemo :("
 }
 
 test();
