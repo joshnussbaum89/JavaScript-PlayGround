@@ -162,13 +162,30 @@ function findNemo(sentence) {
 
 
 
+/**
+ * Find Middle Characters of a String
+ @param {string} Word 
+ @returns {string} - Middle character if odd, middle two characters if even
+ ***************************************************************/
+
+function getMiddle(str) {
+  const strChar = str.split('');
+  const strCharLength = strChar.length;
+
+  const middleCharacters = (strCharLength % 2 === 0)
+    ? [strChar[strCharLength / 2 - 1], strChar[strCharLength / 2]].join('')
+    : strChar[Math.floor(strCharLength / 2)];
+
+  return middleCharacters;
+}
+
+
 // Test function: insert test functions here
 function test() {
-  findNemo("I am finding Nemo !") // ➞ "I found Nemo at 4!"
-  findNemo("Nemo is me") // ➞ "I found Nemo at 1!"
-  findNemo("I Nemo am") // ➞ "I found Nemo at 2!"
-  findNemo("No fish here...")
-  findNemo("Is it Nemos, Nemona, Nemoor or Garfield?") // "I can't find Nemo :("
+  getMiddle("test") // ➞ "es"
+  getMiddle("testing") // ➞ "t"
+  getMiddle("middle") // ➞ "dd"
+  getMiddle("A") // ➞ "A"
 }
 
 test();
