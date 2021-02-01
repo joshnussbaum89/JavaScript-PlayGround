@@ -180,12 +180,35 @@ function getMiddle(str) {
 }
 
 
+
+/**
+ * Reverse the Odd Length Words
+ @param {string} 
+ @returns {string} - Same string, but odd length words are reversed
+ ***************************************************************/
+
+function reverseOdd(str) {
+  const eachWord = str.split(' ');
+
+  const newArr = eachWord.map(word => {
+    if (word.length % 2 !== 0) {
+      return word
+        .split('')
+        .reverse()
+        .join('');
+    } else {
+      return word;
+    }
+  });
+
+  return newArr.join(' ');
+}
+
 // Test function: insert test functions here
 function test() {
-  getMiddle("test") // ➞ "es"
-  getMiddle("testing") // ➞ "t"
-  getMiddle("middle") // ➞ "dd"
-  getMiddle("A") // ➞ "A"
+  reverseOdd("Bananas") // ➞ "sananaB"
+  reverseOdd("One two three four") // ➞ "enO owt eerht four"
+  reverseOdd("Make sure uoy only esrever sdrow of ddo length") // ➞ "Make sure you only reverse words of odd length"
 }
 
 test();
