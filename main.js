@@ -204,11 +204,34 @@ function reverseOdd(str) {
   return newArr.join(' ');
 }
 
+
+
+/**
+ * Compare the Triplets
+ @param {array} 
+ @returns {array} - Array that includes the scores of two players
+ ***************************************************************/
+
+const compareTriplets = (a, b) => {
+  let aliceScore = 0;
+  let bobScore = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    (a[i] > b[i]) ?
+      aliceScore += 1 :
+      (a[i] < b[i]) ?
+        bobScore += 1 :
+        null;
+  }
+
+  return [aliceScore, bobScore];
+}
+
+
 // Test function: insert test functions here
 function test() {
-  reverseOdd("Bananas") // ➞ "sananaB"
-  reverseOdd("One two three four") // ➞ "enO owt eerht four"
-  reverseOdd("Make sure uoy only esrever sdrow of ddo length") // ➞ "Make sure you only reverse words of odd length"
+  compareTriplets([5, 6, 7], [3, 6, 10]); // [1, 1]
+  compareTriplets([17, 28, 30], [99, 16, 8]); // [2, 1]
 }
 
 test();
