@@ -228,10 +228,19 @@ const compareTriplets = (a, b) => {
 }
 
 
+
+/**
+ * A Very Big Sum
+ @param {array}
+ @returns {number} - Return the sum of numbers in an array
+ ***************************************************************/
+
+const aVeryBigSum = ar => ar.reduce((acc, val) => acc += val);
+
+
 // Test function: insert test functions here
 function test() {
-  compareTriplets([5, 6, 7], [3, 6, 10]); // [1, 1]
-  compareTriplets([17, 28, 30], [99, 16, 8]); // [2, 1]
+  aVeryBigSum([1000000001, 1000000002, 1000000003, 1000000004, 1000000005]); // 5000000015
 }
 
 test();
