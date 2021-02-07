@@ -238,9 +238,88 @@ const compareTriplets = (a, b) => {
 const aVeryBigSum = ar => ar.reduce((acc, val) => acc += val);
 
 
-// Test function: insert test functions here
+
+// ELOQUENT JAVASCRIPT EXERCISES 
+
+/**
+ * Draw a triangle
+ @param {str}
+ @returns Returns a console.log of a hash triangle
+ ***************************************************************/
+
+function drawTriangle(str) {
+  for (let i = 0; i < 7; i++) {
+    console.log(str += '#');
+  }
+}
+
+
+/**
+ * Fizz Buzz 
+ @returns Returns a console.log of every number from 1-100 
+ 1. If number is divisible by 5 and 3, return 'fizzBuzz'
+ 2. If number is divisible by 5 and NOT 3, return 'buzz'
+ 3. If number is divisible by only 3, return 'fizz'
+ 4. Else return integer 
+ ***************************************************************/
+
+function fizzBizz() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      console.log('fizzBuzz');
+    } else if (i % 5 === 0 && i % 3 !== 0) {
+      console.log('buzz');
+    } else if (i % 3 === 0) {
+      console.log('fizz');
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+
+/**
+ * Draw a triangle
+ @param {number} 
+ @returns Returns a console.log of a chessboard. Size based on the function argument number.
+ ***************************************************************/
+
+function drawChessBoard(sizeNum) {
+  const evenStringHash = ' #';
+  const oddStringHash = '# ';
+
+  for (let i = 0; i < sizeNum; i++) {
+    if (i % 2 == 0) {
+      console.log(evenStringHash.repeat(sizeNum));
+    } else if (i % 2 != 0) {
+      console.log(oddStringHash.repeat(sizeNum));
+    }
+  }
+}
+
+
+/**
+ * Draw a garden
+ @param {number} 
+ @returns Returns a console.log of a garden. Size based on the function argument number.
+ ***************************************************************/
+
+const drawGarden = num => {
+  const trees = [' 🌳', ' 🌲', ' 🎋', ' 🌴', ' 🎄'];
+  const flowers = [' 🌺', ' 🌻', ' 🌷', ' 🌸', ' 🌹'];
+
+  for (let i = 0; i < num; i++) {
+    (i % 2 == 0)
+      ? console.log(trees[Math.floor(Math.random() * trees.length)].repeat(num))
+      : console.log(flowers[Math.floor(Math.random() * flowers.length)].repeat(num));
+  }
+}
+
+
+
+//Test function: insert test functions here
 function test() {
-  aVeryBigSum([1000000001, 1000000002, 1000000003, 1000000004, 1000000005]); // 5000000015
+  drawGarden(Math.floor(Math.random()* 100));
 }
 
 test();
