@@ -317,9 +317,30 @@ const drawGarden = num => {
 
 
 
+/**
+ * Plus Minus
+ @param {arr} numbers 
+ @returns Returns 3 console.logs of numbers. Checks if number is positive, negative or zero
+ ***************************************************************/
+
+const plusMinus = arr => {
+  const positiveNumbers = arr.filter(num => num > 0);
+  const negativeNumbers = arr.filter(num => num < 0);
+  const zeroNumbers = arr.filter(num => num === 0);
+
+  const positivePercentage = (positiveNumbers.length / arr.length).toFixed(6);
+  const negativePercentage = (negativeNumbers.length / arr.length).toFixed(6);
+  const zeroPercentage = (zeroNumbers.length / arr.length).toFixed(6);
+
+  console.log(positivePercentage);
+  console.log(negativePercentage);
+  console.log(zeroPercentage);
+};
+
+
 //Test function: insert test functions here
 function test() {
-  drawGarden(Math.floor(Math.random()* 100));
+
 }
 
 test();
