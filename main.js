@@ -365,9 +365,30 @@ const diagonalDifference = arr => {
 }
 
 
+
+/**
+ * Draw a staircase
+ @param {number} 
+ @returns returns a console.log of a reversed staircase
+ ***************************************************************/
+
+const staircase = n => {
+  let space = ' ';
+  let topStair = space.repeat(n - 1).split('');
+  topStair.push('#');
+  console.log(topStair.join(''));
+
+  for (let i = n; i > 1 && i <= n; i--) {
+    let isHash = element => element === '#';
+    let found = topStair.findIndex(isHash);
+    topStair.splice(found - 1, 1, '#');
+    console.log(topStair.join(''));
+  }
+};
+
 //Test function: insert test functions here
 function test() {
-
+  staircase(6);
 }
 
 test();
