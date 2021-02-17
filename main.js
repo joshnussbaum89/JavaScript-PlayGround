@@ -386,9 +386,47 @@ const staircase = n => {
   }
 };
 
+
+
+/**
+ * Minimum + Maximum Sums from lowest and highest numbers in an array
+ @param {array} array of 5 numbers
+ @returns returns a console.log of highest and lowest sum
+ ***************************************************************/
+
+const miniMaxSum = (array) => {
+  // make two copies of original array
+  const array1 = [...array];
+  const array2 = [...array];
+
+  // return array of lowest 4 numbers
+  const sortedLowToHigh = (arr) => {
+    arr.sort((a, b) => a - b);
+    const smallestNums = arr.splice(0, 4);
+    return smallestNums;
+  }
+
+  // return array of highest 4 numbers
+  const sortedHighToLow = (arr) => {
+    arr.sort((a, b) => b - a);
+    const largestNums = arr.splice(0, 4);
+    return largestNums;
+  }
+
+  // add lowest numbers and highest numbers together
+  const smallestNums = sortedLowToHigh(array1);
+  const largestNums = sortedHighToLow(array2);
+  const smallSum = smallestNums.reduce((total, num) => total += num);
+  const largeSum = largestNums.reduce((total, num) => total += num);
+
+  // print sums
+  console.log(smallSum, largeSum);
+};
+
+
 //Test function: insert test functions here
 function test() {
-  staircase(6);
+  miniMaxSum([1, 3, 5, 7, 9]);
 }
 
 test();
