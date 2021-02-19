@@ -424,9 +424,32 @@ const miniMaxSum = (array) => {
 };
 
 
+
+/**
+ * Count amount of tallest birthday candles
+ @param {array} array of candle lengths
+ @returns returns the amount of tallest birthday candles from array
+ ***************************************************************/
+
+function birthdayCakeCandles(candles) {
+  // sort highest to lowest
+  candles.sort((a, b) => b - a);
+
+  // save 1st number to a 'highest' variable 
+  const highest = candles[0];
+
+  // filter through and compare each number to 'highest'
+  // if number is equal to 'highest'
+  const tallestCandles = candles.filter(candle => candle === highest);
+
+  // return filtered array length
+  return tallestCandles.length;
+}
+
+
 //Test function: insert test functions here
 function test() {
-  miniMaxSum([1, 3, 5, 7, 9]);
+  birthdayCakeCandles([3, 2, 1, 3]);
 }
 
 test();
