@@ -5,6 +5,7 @@
  * capital letters moved to front of word
  ***************************************************************/
 
+
 function capToFront(word) {
   const letters = word.split("");
 
@@ -447,9 +448,48 @@ function birthdayCakeCandles(candles) {
 }
 
 
+
+/**
+ * Time Conversion
+ @param {string} string representing time in 12-hour format
+ @returns military time
+ ***************************************************************/
+
+const timeConversion = timeString => {
+  const PM = timeString.match('PM') ? true : false;
+  timeString = timeString.split(':');
+  const min = timeString[1];
+
+  let hour;
+  let sec;
+
+  if (PM) {
+    hour = timeString[0];
+
+    if (+hour === 12) {
+      hour = '12';
+    } else {
+      hour = 12 + (+timeString[0]);
+    }
+
+    sec = timeString[2].replace('PM', '');
+  } else {
+    hour = timeString[0];
+
+    if (+hour === 12) {
+      hour = '00';
+    }
+
+    sec = timeString[2].replace('AM', '');
+  }
+
+  return `${hour}:${min}:${sec}`;
+}
+
+
 //Test function: insert test functions here
 function test() {
-  birthdayCakeCandles([3, 2, 1, 3]);
+  console.log(timeConversion('01:00:00AM'));
 }
 
 test();
