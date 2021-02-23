@@ -487,9 +487,34 @@ const timeConversion = timeString => {
 }
 
 
+
+/**
+ * Grading Students
+ @param {array} array of student grades
+ @returns array of grades rounded to nearest multiple of 5 if it's within 2 numbers of nearest multiple of 5
+ failing grade is lower than 38
+ ***************************************************************/
+
+function gradingStudents(grades) {
+  const roundedGrades = grades.map((grade) => {
+    // round to nearest multiple of 5
+    const rounded = Math.ceil(grade / 5) * 5;
+    // make sure difference is less than 3 and higher than 38
+    const canBeRounded = rounded - grade < 3 && grade >= 38;
+    // check boolean value 
+    if (canBeRounded) {
+      return rounded;
+    } else {
+      return grade;
+    }
+  });
+  // return either rounded grade or original grade
+  return roundedGrades;
+}
+
 //Test function: insert test functions here
 function test() {
-  console.log(timeConversion('01:00:00AM'));
+  console.log(gradingStudents([73, 67, 38, 33]));
 }
 
 test();
