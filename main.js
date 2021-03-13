@@ -530,12 +530,39 @@ function detectBrowser(userAgent) {
   }
 }
 
+
+
+/**
+ * Evens or Odds
+ @param {string} string of numbers
+ @returns indication of whether the sum of even numbers or odd numbers is larger
+ ***************************************************************/
+
+const evenOrOdd = str => {
+  const individualNumStrings = str.split('');
+  const individualNumIntegers = individualNumStrings.map(number => +number);
+
+  const evenSum = individualNumIntegers
+    .filter(number => number % 2 === 0)
+    .reduce((a, b) => a + b);
+
+  const oddSum = individualNumIntegers
+    .filter(number => number % 2 !== 0)
+    .reduce((a, b) => a + b);
+
+  return (oddSum > evenSum)
+    ? 'Odd is greater than Even'
+    : (evenSum > oddSum)
+      ? 'Even is greater than Odd'
+      : 'Even and Odd are the same';
+};
+
 //Test function: insert test functions here
 function test() {
   console.log(
-    detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36"), // ➞ "Google Chrome"
-    detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0"), // ➞ "Mozilla Firefox"
-    detectBrowser("Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko") // ➞ "Internet Explorer"
+    evenOrOdd('22471'), // ➞ 'Even and Odd are the same'
+    evenOrOdd('213613'), // ➞ 'Even and Odd are the same'
+    evenOrOdd('23456') // ➞ 'Even is greater than Odd'
   )
 }
 
