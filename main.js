@@ -557,12 +557,23 @@ const evenOrOdd = str => {
       : 'Even and Odd are the same';
 };
 
+
+
+
+/**
+ * Clone an array
+ @param {array} array 
+ @returns new array that contains original array ex/ [1, 1, [1, 1]]
+ ***************************************************************/
+
+const clone = arr => [...arr, arr];
+
 //Test function: insert test functions here
 function test() {
   console.log(
-    evenOrOdd('22471'), // ➞ 'Even and Odd are the same'
-    evenOrOdd('213613'), // ➞ 'Even and Odd are the same'
-    evenOrOdd('23456') // ➞ 'Even is greater than Odd'
+    clone([1, 1]), // ➞ [1, 1, [1, 1]]
+    clone([1, 2, 3]), // ➞ [1, 2, 3, [1, 2, 3]]
+    clone(["x", "y"]) // ➞ ["x", "y", ["x", "y"]]
   )
 }
 
