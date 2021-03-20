@@ -580,12 +580,24 @@ const findHighest = arr => {
   return findHighest(arr);
 };
 
+
+
+/**
+ * Pi to N Decimal Places
+ * @param {number} n number 
+ * @return PI to N Decimal Places
+ */
+const myPi = n => +Math.PI.toFixed(n);
+
+
+
+
 //Test function: insert test functions here
 function test() {
   console.log(
-    findHighest([-1, 3, 5, 6, 99, 12, 2]), // ➞ 99
-    findHighest([0, 12, 4, 87]), // ➞ 87
-    findHighest([6, 7, 8]) // ➞ 8
+    myPi(5), // ➞ 3.14159
+    myPi(4), // ➞ 3.1416
+    myPi(15), // ➞ 3.141592653589793
   )
 }
 
