@@ -591,13 +591,25 @@ const myPi = n => +Math.PI.toFixed(n);
 
 
 
+/**
+ * Return highest individual number within a multi-digit number
+ * @param {number} number 
+ * @return highest number
+ */
+const highestDigit = number => {
+  const numArrayStrings = number.toString().split('');
+  const numArrayInts = numArrayStrings.map(num => +num);
+
+  return Math.max(...numArrayInts);
+};
+
 
 //Test function: insert test functions here
 function test() {
   console.log(
-    myPi(5), // ➞ 3.14159
-    myPi(4), // ➞ 3.1416
-    myPi(15), // ➞ 3.141592653589793
+    highestDigit(379), // ➞ 9
+    highestDigit(2), // ➞ 2
+    highestDigit(377401) // ➞ 7
   )
 }
 
