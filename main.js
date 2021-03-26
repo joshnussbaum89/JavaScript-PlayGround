@@ -5,7 +5,6 @@
  * capital letters moved to front of word
  ***************************************************************/
 
-
 function capToFront(word) {
   const letters = word.split("");
 
@@ -21,8 +20,6 @@ function capToFront(word) {
 
   return `${joinCapitalLetters}${joinLowerLetters}`;
 }
-
-
 
 /** Two functions: encode() replaces vowels with 1 - 5. decode() replaces numbers with respective vowels
  @param {string} word
@@ -45,14 +42,12 @@ function encode(string) {
 
 function decode(string) {
   return string
-    .replace(/1/g, 'a')
-    .replace(/2/g, 'e')
-    .replace(/3/g, 'i')
-    .replace(/4/g, 'o')
-    .replace(/5/g, 'u');
+    .replace(/1/g, "a")
+    .replace(/2/g, "e")
+    .replace(/3/g, "i")
+    .replace(/4/g, "o")
+    .replace(/5/g, "u");
 }
-
-
 
 /**
  * Rock, Paper, Scissors
@@ -65,28 +60,30 @@ function calculateScore(games) {
   let bensonWins = 0;
   let tiedRounds = 0;
 
-  games.forEach(game => {
+  games.forEach((game) => {
     if (game[0] === game[1]) {
       tiedRounds += 1;
-    } else if (game[0] === 'R' && game[1] === 'S') {
+    } else if (game[0] === "R" && game[1] === "S") {
       abigailWins += 1;
-    } else if (game[0] === 'S' && game[1] === 'P') {
+    } else if (game[0] === "S" && game[1] === "P") {
       abigailWins += 1;
-    } else if (game[0] === 'P' && game[1] === 'R') {
+    } else if (game[0] === "P" && game[1] === "R") {
       abigailWins += 1;
-    } else if (game[1] === 'R' && game[0] === 'S') {
+    } else if (game[1] === "R" && game[0] === "S") {
       bensonWins += 1;
-    } else if (game[1] === 'S' && game[0] === 'P') {
+    } else if (game[1] === "S" && game[0] === "P") {
       bensonWins += 1;
-    } else if (game[1] === 'P' && game[0] === 'R') {
+    } else if (game[1] === "P" && game[0] === "R") {
       bensonWins += 1;
     }
-  })
+  });
 
-  return abigailWins > bensonWins ? "Abigail" : abigailWins < bensonWins ? "Benson" : "Tie";
+  return abigailWins > bensonWins
+    ? "Abigail"
+    : abigailWins < bensonWins
+    ? "Benson"
+    : "Tie";
 }
-
-
 
 /**
  * Return letters only from a string
@@ -94,9 +91,7 @@ function calculateScore(games) {
  @return {string} return 'decoded' string ex/ "R!=:~0o0./c&}9k`60=y" => "Rocky"
  ***************************************************************/
 
-const lettersOnly = str => str.replace(/[^A-Za-z]/g, "");
-
-
+const lettersOnly = (str) => str.replace(/[^A-Za-z]/g, "");
 
 /**
  * Sort Numbers in descending order
@@ -104,15 +99,9 @@ const lettersOnly = str => str.replace(/[^A-Za-z]/g, "");
  @return {number} return reversed number
  ***************************************************************/
 
-const sortDescending = num => {
-  +num.toString()
-    .split('')
-    .sort()
-    .reverse()
-    .join('');
-}
-
-
+const sortDescending = (num) => {
+  +num.toString().split("").sort().reverse().join("");
+};
 
 /**
  * Reverse the Case
@@ -121,11 +110,14 @@ const sortDescending = num => {
  ***************************************************************/
 
 const reverseCase = (str) =>
-  str.split('')
-    .map((letter) => letter === letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase())
-    .join('');
-
-
+  str
+    .split("")
+    .map((letter) =>
+      letter === letter.toUpperCase()
+        ? letter.toLowerCase()
+        : letter.toUpperCase()
+    )
+    .join("");
 
 /**
  * Hiding the Card Number
@@ -142,8 +134,6 @@ function cardHide(card) {
   return `${asterisks}${slicedCardNum}`;
 }
 
-
-
 /**
  * Finding Nemo
  @param {string} Sentence - Sentence thats either includes or does not include 'Nemo'
@@ -151,17 +141,15 @@ function cardHide(card) {
  ***************************************************************/
 
 function findNemo(sentence) {
-  const nemoIndex = sentence.split(' ').indexOf('Nemo') + 1;
-  let message = '';
+  const nemoIndex = sentence.split(" ").indexOf("Nemo") + 1;
+  let message = "";
 
-  (sentence.search('nemo') && nemoIndex !== 0)
-    ? message = `I found Nemo at ${nemoIndex}!`
-    : message = "I can't find Nemo :(";
+  sentence.search("nemo") && nemoIndex !== 0
+    ? (message = `I found Nemo at ${nemoIndex}!`)
+    : (message = "I can't find Nemo :(");
 
   return message;
 }
-
-
 
 /**
  * Find Middle Characters of a String
@@ -170,17 +158,16 @@ function findNemo(sentence) {
  ***************************************************************/
 
 function getMiddle(str) {
-  const strChar = str.split('');
+  const strChar = str.split("");
   const strCharLength = strChar.length;
 
-  const middleCharacters = (strCharLength % 2 === 0)
-    ? [strChar[strCharLength / 2 - 1], strChar[strCharLength / 2]].join('')
-    : strChar[Math.floor(strCharLength / 2)];
+  const middleCharacters =
+    strCharLength % 2 === 0
+      ? [strChar[strCharLength / 2 - 1], strChar[strCharLength / 2]].join("")
+      : strChar[Math.floor(strCharLength / 2)];
 
   return middleCharacters;
 }
-
-
 
 /**
  * Reverse the Odd Length Words
@@ -189,23 +176,18 @@ function getMiddle(str) {
  ***************************************************************/
 
 function reverseOdd(str) {
-  const eachWord = str.split(' ');
+  const eachWord = str.split(" ");
 
-  const newArr = eachWord.map(word => {
+  const newArr = eachWord.map((word) => {
     if (word.length % 2 !== 0) {
-      return word
-        .split('')
-        .reverse()
-        .join('');
+      return word.split("").reverse().join("");
     } else {
       return word;
     }
   });
 
-  return newArr.join(' ');
+  return newArr.join(" ");
 }
-
-
 
 /**
  * Compare the Triplets
@@ -218,17 +200,11 @@ const compareTriplets = (a, b) => {
   let bobScore = 0;
 
   for (let i = 0; i < a.length; i++) {
-    (a[i] > b[i]) ?
-      aliceScore += 1 :
-      (a[i] < b[i]) ?
-        bobScore += 1 :
-        null;
+    a[i] > b[i] ? (aliceScore += 1) : a[i] < b[i] ? (bobScore += 1) : null;
   }
 
   return [aliceScore, bobScore];
-}
-
-
+};
 
 /**
  * A Very Big Sum
@@ -236,11 +212,9 @@ const compareTriplets = (a, b) => {
  @returns {number} - Return the sum of numbers in an array
  ***************************************************************/
 
-const aVeryBigSum = ar => ar.reduce((acc, val) => acc += val);
+const aVeryBigSum = (ar) => ar.reduce((acc, val) => (acc += val));
 
-
-
-// ELOQUENT JAVASCRIPT EXERCISES 
+// ELOQUENT JAVASCRIPT EXERCISES
 
 /**
  * Draw a triangle
@@ -250,10 +224,9 @@ const aVeryBigSum = ar => ar.reduce((acc, val) => acc += val);
 
 function drawTriangle(str) {
   for (let i = 0; i < 7; i++) {
-    console.log(str += '#');
+    console.log((str += "#"));
   }
 }
-
 
 /**
  * Fizz Buzz 
@@ -267,17 +240,16 @@ function drawTriangle(str) {
 function fizzBizz() {
   for (let i = 1; i <= 100; i++) {
     if (i % 5 === 0 && i % 3 === 0) {
-      console.log('fizzBuzz');
+      console.log("fizzBuzz");
     } else if (i % 5 === 0 && i % 3 !== 0) {
-      console.log('buzz');
+      console.log("buzz");
     } else if (i % 3 === 0) {
-      console.log('fizz');
+      console.log("fizz");
     } else {
       console.log(i);
     }
   }
 }
-
 
 /**
  * Draw a triangle
@@ -286,8 +258,8 @@ function fizzBizz() {
  ***************************************************************/
 
 function drawChessBoard(sizeNum) {
-  const evenStringHash = ' #';
-  const oddStringHash = '# ';
+  const evenStringHash = " #";
+  const oddStringHash = "# ";
 
   for (let i = 0; i < sizeNum; i++) {
     if (i % 2 == 0) {
@@ -298,25 +270,24 @@ function drawChessBoard(sizeNum) {
   }
 }
 
-
 /**
  * Draw a garden
  @param {number} 
  @returns Returns a console.log of a garden. Size based on the function argument number.
  ***************************************************************/
 
-const drawGarden = num => {
-  const trees = [' 🌳', ' 🌲', ' 🎋', ' 🌴', ' 🎄'];
-  const flowers = [' 🌺', ' 🌻', ' 🌷', ' 🌸', ' 🌹'];
+const drawGarden = (num) => {
+  const trees = [" 🌳", " 🌲", " 🎋", " 🌴", " 🎄"];
+  const flowers = [" 🌺", " 🌻", " 🌷", " 🌸", " 🌹"];
 
   for (let i = 0; i < num; i++) {
-    (i % 2 == 0)
+    i % 2 == 0
       ? console.log(trees[Math.floor(Math.random() * trees.length)].repeat(num))
-      : console.log(flowers[Math.floor(Math.random() * flowers.length)].repeat(num));
+      : console.log(
+          flowers[Math.floor(Math.random() * flowers.length)].repeat(num)
+        );
   }
-}
-
-
+};
 
 /**
  * Plus Minus
@@ -324,10 +295,10 @@ const drawGarden = num => {
  @returns Returns 3 console.logs of numbers. Checks if number is positive, negative or zero
  ***************************************************************/
 
-const plusMinus = arr => {
-  const positiveNumbers = arr.filter(num => num > 0);
-  const negativeNumbers = arr.filter(num => num < 0);
-  const zeroNumbers = arr.filter(num => num === 0);
+const plusMinus = (arr) => {
+  const positiveNumbers = arr.filter((num) => num > 0);
+  const negativeNumbers = arr.filter((num) => num < 0);
+  const zeroNumbers = arr.filter((num) => num === 0);
 
   const positivePercentage = (positiveNumbers.length / arr.length).toFixed(6);
   const negativePercentage = (negativeNumbers.length / arr.length).toFixed(6);
@@ -338,15 +309,13 @@ const plusMinus = arr => {
   console.log(zeroPercentage);
 };
 
-
-
 /**
  * Diagonal Difference
  @param {arr} array of arrays 
  @returns absolute difference between the sums of its diagonals
  ***************************************************************/
 
-const diagonalDifference = arr => {
+const diagonalDifference = (arr) => {
   const arrLength = arr.length;
   let diag1 = 0;
   let diag2 = 0;
@@ -363,9 +332,7 @@ const diagonalDifference = arr => {
   }
 
   return Math.abs(diag1 - diag2);
-}
-
-
+};
 
 /**
  * Draw a staircase
@@ -373,21 +340,19 @@ const diagonalDifference = arr => {
  @returns returns a console.log of a reversed staircase
  ***************************************************************/
 
-const staircase = n => {
-  let space = ' ';
-  let topStair = space.repeat(n - 1).split('');
-  topStair.push('#');
-  console.log(topStair.join(''));
+const staircase = (n) => {
+  let space = " ";
+  let topStair = space.repeat(n - 1).split("");
+  topStair.push("#");
+  console.log(topStair.join(""));
 
   for (let i = n; i > 1 && i <= n; i--) {
-    let isHash = element => element === '#';
+    let isHash = (element) => element === "#";
     let found = topStair.findIndex(isHash);
-    topStair.splice(found - 1, 1, '#');
-    console.log(topStair.join(''));
+    topStair.splice(found - 1, 1, "#");
+    console.log(topStair.join(""));
   }
 };
-
-
 
 /**
  * Minimum + Maximum Sums from lowest and highest numbers in an array
@@ -405,26 +370,24 @@ const miniMaxSum = (array) => {
     arr.sort((a, b) => a - b);
     const smallestNums = arr.splice(0, 4);
     return smallestNums;
-  }
+  };
 
   // return array of highest 4 numbers
   const sortedHighToLow = (arr) => {
     arr.sort((a, b) => b - a);
     const largestNums = arr.splice(0, 4);
     return largestNums;
-  }
+  };
 
   // add lowest numbers and highest numbers together
   const smallestNums = sortedLowToHigh(array1);
   const largestNums = sortedHighToLow(array2);
-  const smallSum = smallestNums.reduce((total, num) => total += num);
-  const largeSum = largestNums.reduce((total, num) => total += num);
+  const smallSum = smallestNums.reduce((total, num) => (total += num));
+  const largeSum = largestNums.reduce((total, num) => (total += num));
 
   // print sums
   console.log(smallSum, largeSum);
 };
-
-
 
 /**
  * Count amount of tallest birthday candles
@@ -436,18 +399,16 @@ function birthdayCakeCandles(candles) {
   // sort highest to lowest
   candles.sort((a, b) => b - a);
 
-  // save 1st number to a 'highest' variable 
+  // save 1st number to a 'highest' variable
   const highest = candles[0];
 
   // filter through and compare each number to 'highest'
   // if number is equal to 'highest'
-  const tallestCandles = candles.filter(candle => candle === highest);
+  const tallestCandles = candles.filter((candle) => candle === highest);
 
   // return filtered array length
   return tallestCandles.length;
 }
-
-
 
 /**
  * Time Conversion
@@ -455,9 +416,9 @@ function birthdayCakeCandles(candles) {
  @returns military time
  ***************************************************************/
 
-const timeConversion = timeString => {
-  const PM = timeString.match('PM') ? true : false;
-  timeString = timeString.split(':');
+const timeConversion = (timeString) => {
+  const PM = timeString.match("PM") ? true : false;
+  timeString = timeString.split(":");
   const min = timeString[1];
 
   let hour;
@@ -467,26 +428,24 @@ const timeConversion = timeString => {
     hour = timeString[0];
 
     if (+hour === 12) {
-      hour = '12';
+      hour = "12";
     } else {
-      hour = 12 + (+timeString[0]);
+      hour = 12 + +timeString[0];
     }
 
-    sec = timeString[2].replace('PM', '');
+    sec = timeString[2].replace("PM", "");
   } else {
     hour = timeString[0];
 
     if (+hour === 12) {
-      hour = '00';
+      hour = "00";
     }
 
-    sec = timeString[2].replace('AM', '');
+    sec = timeString[2].replace("AM", "");
   }
 
   return `${hour}:${min}:${sec}`;
-}
-
-
+};
 
 /**
  * Grading Students
@@ -501,7 +460,7 @@ function gradingStudents(grades) {
     const rounded = Math.ceil(grade / 5) * 5;
     // make sure difference is less than 3 and higher than 38
     const canBeRounded = rounded - grade < 3 && grade >= 38;
-    // check boolean value 
+    // check boolean value
     if (canBeRounded) {
       return rounded;
     } else {
@@ -512,8 +471,6 @@ function gradingStudents(grades) {
   return roundedGrades;
 }
 
-
-
 /**
  * Detect Browser
  @param {string} string 
@@ -521,16 +478,14 @@ function gradingStudents(grades) {
  ***************************************************************/
 
 function detectBrowser(userAgent) {
-  if (userAgent.includes('Chrome')) {
-    return 'Google Chrome';
-  } else if (userAgent.includes('Firefox')) {
-    return 'Mozilla Firefox';
+  if (userAgent.includes("Chrome")) {
+    return "Google Chrome";
+  } else if (userAgent.includes("Firefox")) {
+    return "Mozilla Firefox";
   } else {
-    return 'Internet Explorer';
+    return "Internet Explorer";
   }
 }
-
-
 
 /**
  * Evens or Odds
@@ -538,26 +493,24 @@ function detectBrowser(userAgent) {
  @returns indication of whether the sum of even numbers or odd numbers is larger
  ***************************************************************/
 
-const evenOrOdd = str => {
-  const individualNumStrings = str.split('');
-  const individualNumIntegers = individualNumStrings.map(number => +number);
+const evenOrOdd = (str) => {
+  const individualNumStrings = str.split("");
+  const individualNumIntegers = individualNumStrings.map((number) => +number);
 
   const evenSum = individualNumIntegers
-    .filter(number => number % 2 === 0)
+    .filter((number) => number % 2 === 0)
     .reduce((a, b) => a + b);
 
   const oddSum = individualNumIntegers
-    .filter(number => number % 2 !== 0)
+    .filter((number) => number % 2 !== 0)
     .reduce((a, b) => a + b);
 
-  return (oddSum > evenSum)
-    ? 'Odd is greater than Even'
-    : (evenSum > oddSum)
-      ? 'Even is greater than Odd'
-      : 'Even and Odd are the same';
+  return oddSum > evenSum
+    ? "Odd is greater than Even"
+    : evenSum > oddSum
+    ? "Even is greater than Odd"
+    : "Even and Odd are the same";
 };
-
-
 
 /**
  * Clone an array
@@ -565,52 +518,85 @@ const evenOrOdd = str => {
  @returns new array that contains original array ex/ [1, 1, [1, 1]]
  ***************************************************************/
 
-const clone = arr => [...arr, arr];
-
+const clone = (arr) => [...arr, arr];
 
 /**
  * Find the Highest Integer in the Array Using Recursion
  * @param {array} arr array of numbers
  * @return findHighest function until highest number is found
  */
-const findHighest = arr => {
+const findHighest = (arr) => {
   if (arr.length === 1) return arr[0];
   if (arr[0] > arr[1]) arr[1] = arr[0];
   arr = arr.splice(1);
   return findHighest(arr);
 };
 
-
-
 /**
  * Pi to N Decimal Places
- * @param {number} n number 
+ * @param {number} n number
  * @return PI to N Decimal Places
  */
-const myPi = n => +Math.PI.toFixed(n);
-
-
+const myPi = (n) => +Math.PI.toFixed(n);
 
 /**
  * Return highest individual number within a multi-digit number
- * @param {number} number 
+ * @param {number} number
  * @return highest number
  */
-const highestDigit = number => {
-  const numArrayStrings = number.toString().split('');
-  const numArrayInts = numArrayStrings.map(num => +num);
+const highestDigit = (number) => {
+  const numArrayStrings = number.toString().split("");
+  const numArrayInts = numArrayStrings.map((num) => +num);
 
   return Math.max(...numArrayInts);
 };
 
+/**
+ * Family Tree Function
+ * @param {int} number indicating where in the family tree this person is ex/ father, grandfather, great grandfather etc.
+ * @param {string} letter idicates sex
+ */
+const generation = (x, y) => {
+  const family = {
+    "-3": {
+      m: "great grandfather",
+      f: "great grandmother",
+    },
+    "-2": {
+      m: "grandfather",
+      f: "grandmother",
+    },
+    "-1": {
+      m: "father",
+      f: "mother",
+    },
+    0: {
+      m: "me!",
+      f: "me!",
+    },
+    1: {
+      m: "son",
+      f: "daughter",
+    },
+    2: {
+      m: "grandson",
+      f: "granddaughter",
+    },
+    3: {
+      m: "great grandson",
+      f: "great granddaughter",
+    },
+  };
+  return family[x][y];
+};
 
 //Test function: insert test functions here
 function test() {
   console.log(
-    highestDigit(379), // ➞ 9
-    highestDigit(2), // ➞ 2
-    highestDigit(377401) // ➞ 7
-  )
+    generation(2, "f"), // ➞ "granddaughter"
+    generation(-3, "m"), // ➞ "great grandfather"
+    generation(1, "f") // ➞ "daughter"
+  );
 }
 
 test();
