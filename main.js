@@ -525,6 +525,7 @@ const clone = (arr) => [...arr, arr];
  * @param {array} arr array of numbers
  * @return findHighest function until highest number is found
  */
+
 const findHighest = (arr) => {
   if (arr.length === 1) return arr[0];
   if (arr[0] > arr[1]) arr[1] = arr[0];
@@ -537,6 +538,7 @@ const findHighest = (arr) => {
  * @param {number} n number
  * @return PI to N Decimal Places
  */
+
 const myPi = (n) => +Math.PI.toFixed(n);
 
 /**
@@ -544,6 +546,7 @@ const myPi = (n) => +Math.PI.toFixed(n);
  * @param {number} number
  * @return highest number
  */
+
 const highestDigit = (number) => {
   const numArrayStrings = number.toString().split("");
   const numArrayInts = numArrayStrings.map((num) => +num);
@@ -556,6 +559,7 @@ const highestDigit = (number) => {
  * @param {int} number indicating where in the family tree this person is ex/ father, grandfather, great grandfather etc.
  * @param {string} letter idicates sex
  */
+
 const generation = (x, y) => {
   const family = {
     "-3": {
@@ -590,12 +594,65 @@ const generation = (x, y) => {
   return family[x][y];
 };
 
+/**
+ * How Good is Your Name?
+ * @param {string} name
+ * @returns calculated score of name quality by adding up individual letters
+ */
+
+function nameScore(name) {
+  const scores = {
+    A: 100,
+    B: 14,
+    C: 9,
+    D: 28,
+    E: 145,
+    F: 12,
+    G: 3,
+    H: 10,
+    I: 200,
+    J: 100,
+    K: 114,
+    L: 100,
+    M: 25,
+    N: 450,
+    O: 80,
+    P: 2,
+    Q: 12,
+    R: 400,
+    S: 113,
+    T: 405,
+    U: 11,
+    V: 10,
+    W: 10,
+    X: 3,
+    Y: 210,
+    Z: 23,
+  };
+
+  const score = [...name].reduce((a, b) => {
+    return scores[b] ? a + scores[b] : null;
+  }, 0);
+
+  return score <= 60
+    ? "NOT TOO GOOD"
+    : 61 <= score && score <= 300
+    ? "PRETTY GOOD"
+    : 301 <= score && score <= 599
+    ? "VERY GOOD"
+    : score >= 600
+    ? "THE BEST"
+    : null;
+}
+
 //Test function: insert test functions here
 function test() {
   console.log(
-    generation(2, "f"), // ➞ "granddaughter"
-    generation(-3, "m"), // ➞ "great grandfather"
-    generation(1, "f") // ➞ "daughter"
+    nameScore("MUBASHIR"), // ➞ "THE BEST"
+    nameScore("YOU"), // ➞ "VERY GOOD"
+    nameScore("MATT"), // ➞ "THE BEST"
+    nameScore("PUBG"), // ➞ "NOT TOO GOOD"
+    nameScore("BILL GATES") // "THE BEST"
   );
 }
 
