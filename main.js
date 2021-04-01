@@ -645,14 +645,29 @@ function nameScore(name) {
     : null;
 }
 
-//Test function: insert test functions here
+/**
+ * Array operation that determines what numbers between "x" and "y", if any, are divisible by "n"
+ * @param {int} x Starting number
+ * @param {int} y Highest number
+ * @param {int} n Number to divide by
+ * @returns Array including any numbers that are divisible by "n"
+ */
+
+const arrayOperation = (x, y, n) => {
+  const nums = [];
+  for (let i = x; i <= y; i++) {
+    if (i % n === 0) nums.push(i);
+  }
+  return nums;
+};
+
+// Test function: insert test functions here
 function test() {
   console.log(
-    nameScore("MUBASHIR"), // ➞ "THE BEST"
-    nameScore("YOU"), // ➞ "VERY GOOD"
-    nameScore("MATT"), // ➞ "THE BEST"
-    nameScore("PUBG"), // ➞ "NOT TOO GOOD"
-    nameScore("BILL GATES") // "THE BEST"
+    arrayOperation(1, 10, 3), // ➞ [3, 6, 9]
+    arrayOperation(7, 9, 2), // ➞ [8]
+    arrayOperation(15, 20, 7), // ➞ []
+    arrayOperation(10, 50, 10) // [10, 20, 30, 40, 50]
   );
 }
 
