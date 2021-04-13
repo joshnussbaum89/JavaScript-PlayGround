@@ -661,13 +661,31 @@ const arrayOperation = (x, y, n) => {
   return nums;
 };
 
+/**
+ * Number to Array
+ * @param {int} num
+ * @returns original number split into array of individual integers
+ */
+const toArray = (num) =>
+  num
+    .toString()
+    .split("")
+    .map((num) => +num);
+
+/**
+ * Number to Array
+ * @param {array} array
+ * @returns original array of integers joined into one number
+ */
+const toNumber = (arr) => +arr.map((num) => num.toString()).join("");
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    arrayOperation(1, 10, 3), // ➞ [3, 6, 9]
-    arrayOperation(7, 9, 2), // ➞ [8]
-    arrayOperation(15, 20, 7), // ➞ []
-    arrayOperation(10, 50, 10) // [10, 20, 30, 40, 50]
+    toArray(235), // ➞ [2, 3, 5]
+    toArray(0), // ➞ [0]
+    toNumber([2, 3, 5]), // ➞ 235
+    toNumber([0]) // ➞ 0
   );
 }
 
