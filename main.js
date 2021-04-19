@@ -1,7 +1,7 @@
 /**
  * function that takes a word and moves capital letters to front
  @param {string} word
- @return {string} 
+ @return {string}
  * capital letters moved to front of word
  ***************************************************************/
 
@@ -23,7 +23,7 @@ function capToFront(word) {
 
 /** Two functions: encode() replaces vowels with 1 - 5. decode() replaces numbers with respective vowels
  @param {string} word
- @return {string} 
+ @return {string}
   * a -> 1
   * e -> 2
   * i -> 3
@@ -153,7 +153,7 @@ function findNemo(sentence) {
 
 /**
  * Find Middle Characters of a String
- @param {string} Word 
+ @param {string} Word
  @returns {string} - Middle character if odd, middle two characters if even
  ***************************************************************/
 
@@ -171,7 +171,7 @@ function getMiddle(str) {
 
 /**
  * Reverse the Odd Length Words
- @param {string} 
+ @param {string}
  @returns {string} - Same string, but odd length words are reversed
  ***************************************************************/
 
@@ -191,7 +191,7 @@ function reverseOdd(str) {
 
 /**
  * Compare the Triplets
- @param {array} 
+ @param {array}
  @returns {array} - Array that includes the scores of two players
  ***************************************************************/
 
@@ -229,12 +229,12 @@ function drawTriangle(str) {
 }
 
 /**
- * Fizz Buzz 
- @returns Returns a console.log of every number from 1-100 
+ * Fizz Buzz
+ @returns Returns a console.log of every number from 1-100
  1. If number is divisible by 5 and 3, return 'fizzBuzz'
  2. If number is divisible by 5 and NOT 3, return 'buzz'
  3. If number is divisible by only 3, return 'fizz'
- 4. Else return integer 
+ 4. Else return integer
  ***************************************************************/
 
 function fizzBizz() {
@@ -253,7 +253,7 @@ function fizzBizz() {
 
 /**
  * Draw a triangle
- @param {number} 
+ @param {number}
  @returns Returns a console.log of a chessboard. Size based on the function argument number.
  ***************************************************************/
 
@@ -272,7 +272,7 @@ function drawChessBoard(sizeNum) {
 
 /**
  * Draw a garden
- @param {number} 
+ @param {number}
  @returns Returns a console.log of a garden. Size based on the function argument number.
  ***************************************************************/
 
@@ -291,7 +291,7 @@ const drawGarden = (num) => {
 
 /**
  * Plus Minus
- @param {arr} numbers 
+ @param {arr} numbers
  @returns Returns 3 console.logs of numbers. Checks if number is positive, negative or zero
  ***************************************************************/
 
@@ -311,7 +311,7 @@ const plusMinus = (arr) => {
 
 /**
  * Diagonal Difference
- @param {arr} array of arrays 
+ @param {arr} array of arrays
  @returns absolute difference between the sums of its diagonals
  ***************************************************************/
 
@@ -336,7 +336,7 @@ const diagonalDifference = (arr) => {
 
 /**
  * Draw a staircase
- @param {number} 
+ @param {number}
  @returns returns a console.log of a reversed staircase
  ***************************************************************/
 
@@ -473,7 +473,7 @@ function gradingStudents(grades) {
 
 /**
  * Detect Browser
- @param {string} string 
+ @param {string} string
  @returns Browser name
  ***************************************************************/
 
@@ -514,7 +514,7 @@ const evenOrOdd = (str) => {
 
 /**
  * Clone an array
- @param {array} array 
+ @param {array} array
  @returns new array that contains original array ex/ [1, 1, [1, 1]]
  ***************************************************************/
 
@@ -679,13 +679,38 @@ const toArray = (num) =>
  */
 const toNumber = (arr) => +arr.map((num) => num.toString()).join("");
 
+/**
+ * Count Ones in a 2D Array
+ * @param {array} matrix
+ * @returns ones in 2D Array
+ */
+const countOnes = (matrix) => {
+  let ones = 0;
+
+  matrix.forEach((num) => {
+    num.forEach((num) => (num === 1 ? (ones += 1) : null));
+  });
+
+  return ones;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    toArray(235), // ➞ [2, 3, 5]
-    toArray(0), // ➞ [0]
-    toNumber([2, 3, 5]), // ➞ 235
-    toNumber([0]) // ➞ 0
+    countOnes([
+      [1, 0],
+      [0, 0],
+    ]), // ➞ 1
+    countOnes([
+      [1, 1, 1],
+      [0, 0, 1],
+      [1, 1, 1],
+    ]), // ➞ 7
+    countOnes([
+      [1, 2, 3],
+      [0, 2, 1],
+      [5, 7, 33],
+    ]) // ➞ 2);
   );
 }
 
