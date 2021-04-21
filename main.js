@@ -694,24 +694,21 @@ const countOnes = (matrix) => {
   return ones;
 };
 
+/**
+ * Prevent new properties from being added to a given object.
+ * @param {object} obj
+ * @returns original object, unchanged.
+ */
+function signYourName(obj) {
+  Object.seal(obj);
+  obj.yourSignature = "Whatever";
+  obj.spouseSignature = "Nice Try";
+  return obj;
+}
+
 // Test function: insert test functions here
 function test() {
-  console.log(
-    countOnes([
-      [1, 0],
-      [0, 0],
-    ]), // ➞ 1
-    countOnes([
-      [1, 1, 1],
-      [0, 0, 1],
-      [1, 1, 1],
-    ]), // ➞ 7
-    countOnes([
-      [1, 2, 3],
-      [0, 2, 1],
-      [5, 7, 33],
-    ]) // ➞ 2);
-  );
+  console.log(signYourName({ yourSignature: "" }));
 }
 
 test();
