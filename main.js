@@ -706,9 +706,41 @@ function signYourName(obj) {
   return obj;
 }
 
+/**
+ * Omnipresent Value
+ * @param {array} arr array of integer arrays
+ * @param {int} val number to check against
+ * @returns boolean indicating if every array includes the "val" it's checked against
+ */
+const isOmnipresent = (arr, val) =>
+  arr
+    .map((array) => array.includes(val))
+    .every((currentValue) => currentValue === true);
+
 // Test function: insert test functions here
 function test() {
-  console.log(signYourName({ yourSignature: "" }));
+  console.log(
+    isOmnipresent(
+      [
+        [1, 1],
+        [1, 3],
+        [5, 1],
+        [6, 1],
+      ],
+      1
+    ), // ➞ true
+    isOmnipresent(
+      [
+        [1, 1],
+        [1, 3],
+        [5, 1],
+        [6, 1],
+      ],
+      6
+    ), // ➞ false
+    isOmnipresent([[5], [5], [5], [6, 5]], 5), // ➞ true
+    isOmnipresent([[5], [5], [5], [6, 5]], 6) // ➞ false);
+  );
 }
 
 test();
