@@ -717,29 +717,25 @@ const isOmnipresent = (arr, val) =>
     .map((array) => array.includes(val))
     .every((currentValue) => currentValue === true);
 
+/**
+ * Syncopated Rhythm
+ * @param {*} s string of periods and hashes
+ * @returns true if hashed land on an even numbered beat (2, 4, etc.)
+ */
+const hasSyncopation = (s) => {
+  const stringArray = [...s];
+
+  return stringArray.some((char, index) => {
+    return char === "#" && (index + 1) % 2 === 0;
+  });
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    isOmnipresent(
-      [
-        [1, 1],
-        [1, 3],
-        [5, 1],
-        [6, 1],
-      ],
-      1
-    ), // ➞ true
-    isOmnipresent(
-      [
-        [1, 1],
-        [1, 3],
-        [5, 1],
-        [6, 1],
-      ],
-      6
-    ), // ➞ false
-    isOmnipresent([[5], [5], [5], [6, 5]], 5), // ➞ true
-    isOmnipresent([[5], [5], [5], [6, 5]], 6) // ➞ false);
+    hasSyncopation(".#.#.#.#"), // ➞ true
+    hasSyncopation("#.#...#."), // ➞ false
+    hasSyncopation("#.#.###.") // ➞ true
   );
 }
 
