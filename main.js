@@ -732,9 +732,9 @@ const hasSyncopation = (s) => {
 
 /**
  * Snail Goes Up The Stairs
- * @param {*} height 
- * @param {*} length 
- * @param {*} tower 
+ * @param {*} height
+ * @param {*} length
+ * @param {*} tower
  * @returns The distance one would travel going up a starcase
  */
 const totalDistance = (height, length, tower) => {
@@ -747,12 +747,24 @@ const totalDistance = (height, length, tower) => {
   return totalDistanceTraveled;
 };
 
+function makesTen(a, b) {
+  return a + b === 10 || a === 10 || b === 10;
+}
+
+/**
+ * Even or Odd Number of Factors
+ * @param {int} num
+ * @returns "odd" or "even"
+ */
+const factorGroup = (num) =>
+  Number.isInteger(Math.sqrt(num)) ? "odd" : "even";
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    totalDistance(0.2, 0.4, 100.0), // ➞ 300.0
-    totalDistance(0.3, 0.2, 25.0), // ➞ 41.7
-    totalDistance(0.1, 0.1, 6.0) // ➞ 12.0);
+    factorGroup(33), // ➞ "even"
+    factorGroup(36), // ➞ "odd"
+    factorGroup(7) // ➞ "even"
   );
 }
 
