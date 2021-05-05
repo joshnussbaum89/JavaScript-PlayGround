@@ -759,12 +759,25 @@ function makesTen(a, b) {
 const factorGroup = (num) =>
   Number.isInteger(Math.sqrt(num)) ? "odd" : "even";
 
+/**
+ * Determine how many walls one can paint by determining surface areas
+ * @param {int} n number of square meters of available paint
+ * @param {*} w width (meters) of a single wall
+ * @param {*} h height (meters) of a single wall
+ */
+const howManyWalls = (n, w, h) => {
+  const wallSize = w * h;
+  const wallsYouCanPaint = Math.floor(n / wallSize);
+
+  return wallsYouCanPaint;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    factorGroup(33), // ➞ "even"
-    factorGroup(36), // ➞ "odd"
-    factorGroup(7) // ➞ "even"
+    howManyWalls(100, 4, 5), // ➞ 5
+    howManyWalls(10, 15, 12), // ➞ 0
+    howManyWalls(41, 3, 6) // ➞ 2
   );
 }
 
