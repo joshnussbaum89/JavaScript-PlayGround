@@ -772,12 +772,22 @@ const howManyWalls = (n, w, h) => {
   return wallsYouCanPaint;
 };
 
+/**
+ * Nth Even Number
+ * @param {int} num
+ * @returns the nth even number
+ */
+const nthEven = (num) => num * 2 - 2;
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    howManyWalls(100, 4, 5), // ➞ 5
-    howManyWalls(10, 15, 12), // ➞ 0
-    howManyWalls(41, 3, 6) // ➞ 2
+    nthEven(1), // ➞ 0
+    // 0 is the first even number
+    nthEven(2), // ➞ 2
+    // 2 is the second even number
+    nthEven(100) // ➞ 198
+    // 198 is the 100th even number
   );
 }
 
