@@ -779,15 +779,41 @@ const howManyWalls = (n, w, h) => {
  */
 const nthEven = (num) => num * 2 - 2;
 
+/**
+ * Calculate landmass percentage of a country in relation to worlds landmass
+ * @param {string} name
+ * @param {int} area
+ * @returns [name] is [countryMassFormattedStr]% of the total world's landmass
+ */
+const areaOfCountry = (name, area) => {
+  let countryMass = (area / 148940000).toFixed(4);
+  let countryMassStr;
+
+  if (countryMass[2] === "0") {
+    countryMassStr = countryMass.substring(3);
+  } else {
+    countryMassStr = countryMass.substring(2);
+  }
+
+  let countryMassArr = [...countryMassStr];
+
+  if (countryMassArr.length === 3) {
+    countryMassArr.splice(1, 0, ".");
+  } else {
+    countryMassArr.splice(2, 0, ".");
+  }
+
+  const countryMassFormattedStr = parseFloat(countryMassArr.join(""));
+
+  return `${name} is ${countryMassFormattedStr}% of the total world's landmass`;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    nthEven(1), // ➞ 0
-    // 0 is the first even number
-    nthEven(2), // ➞ 2
-    // 2 is the second even number
-    nthEven(100) // ➞ 198
-    // 198 is the 100th even number
+    areaOfCountry("Russia", 17098242), // ➞ "Russia is 11.48% of the total world's landmass"
+    areaOfCountry("USA", 9372610), // "USA is 6.29% of the total world's landmass"
+    areaOfCountry("Iran", 1648195) // ➞ "Iran is 1.11% of the total world's landmass"
   );
 }
 
