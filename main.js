@@ -808,12 +808,29 @@ const areaOfCountry = (name, area) => {
   return `${name} is ${countryMassFormattedStr}% of the total world's landmass`;
 };
 
+/**
+ * Adds number to end of array and removes number from beginning of array
+ * @param {arr} arr
+ * @param {int} num
+ * @returns Modified array
+ */
+const nextInLine = (arr, num) => {
+  if (arr.length > 0) {
+    arr.push(num);
+    arr.shift();
+    return arr;
+  } else {
+    return "No array has been selected";
+  }
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    areaOfCountry("Russia", 17098242), // ➞ "Russia is 11.48% of the total world's landmass"
-    areaOfCountry("USA", 9372610), // "USA is 6.29% of the total world's landmass"
-    areaOfCountry("Iran", 1648195) // ➞ "Iran is 1.11% of the total world's landmass"
+    nextInLine([5, 6, 7, 8, 9], 1), // ➞ [6, 7, 8, 9, 1]
+    nextInLine([7, 6, 3, 23, 17], 10), // ➞ [6, 3, 23, 17, 10]
+    nextInLine([1, 10, 20, 42], 6), // ➞ [10, 20, 42, 6]
+    nextInLine([], 6) // ➞ "No array has been selected"
   );
 }
 
