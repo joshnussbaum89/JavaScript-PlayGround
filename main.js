@@ -6,7 +6,7 @@
  ***************************************************************/
 
 function capToFront(word) {
-  const letters = word.split("");
+  const letters = word.split('');
 
   const capLetters = letters.filter(
     (letter) => letter === letter.toUpperCase()
@@ -15,8 +15,8 @@ function capToFront(word) {
     (letter) => letter === letter.toLowerCase()
   );
 
-  const joinCapitalLetters = capLetters.join("");
-  const joinLowerLetters = lowerLetters.join("");
+  const joinCapitalLetters = capLetters.join('');
+  const joinLowerLetters = lowerLetters.join('');
 
   return `${joinCapitalLetters}${joinLowerLetters}`;
 }
@@ -42,11 +42,11 @@ function encode(string) {
 
 function decode(string) {
   return string
-    .replace(/1/g, "a")
-    .replace(/2/g, "e")
-    .replace(/3/g, "i")
-    .replace(/4/g, "o")
-    .replace(/5/g, "u");
+    .replace(/1/g, 'a')
+    .replace(/2/g, 'e')
+    .replace(/3/g, 'i')
+    .replace(/4/g, 'o')
+    .replace(/5/g, 'u');
 }
 
 /**
@@ -63,26 +63,26 @@ function calculateScore(games) {
   games.forEach((game) => {
     if (game[0] === game[1]) {
       tiedRounds += 1;
-    } else if (game[0] === "R" && game[1] === "S") {
+    } else if (game[0] === 'R' && game[1] === 'S') {
       abigailWins += 1;
-    } else if (game[0] === "S" && game[1] === "P") {
+    } else if (game[0] === 'S' && game[1] === 'P') {
       abigailWins += 1;
-    } else if (game[0] === "P" && game[1] === "R") {
+    } else if (game[0] === 'P' && game[1] === 'R') {
       abigailWins += 1;
-    } else if (game[1] === "R" && game[0] === "S") {
+    } else if (game[1] === 'R' && game[0] === 'S') {
       bensonWins += 1;
-    } else if (game[1] === "S" && game[0] === "P") {
+    } else if (game[1] === 'S' && game[0] === 'P') {
       bensonWins += 1;
-    } else if (game[1] === "P" && game[0] === "R") {
+    } else if (game[1] === 'P' && game[0] === 'R') {
       bensonWins += 1;
     }
   });
 
   return abigailWins > bensonWins
-    ? "Abigail"
+    ? 'Abigail'
     : abigailWins < bensonWins
-    ? "Benson"
-    : "Tie";
+    ? 'Benson'
+    : 'Tie';
 }
 
 /**
@@ -91,7 +91,7 @@ function calculateScore(games) {
  @return {string} return 'decoded' string ex/ "R!=:~0o0./c&}9k`60=y" => "Rocky"
  ***************************************************************/
 
-const lettersOnly = (str) => str.replace(/[^A-Za-z]/g, "");
+const lettersOnly = (str) => str.replace(/[^A-Za-z]/g, '');
 
 /**
  * Sort Numbers in descending order
@@ -100,7 +100,7 @@ const lettersOnly = (str) => str.replace(/[^A-Za-z]/g, "");
  ***************************************************************/
 
 const sortDescending = (num) => {
-  +num.toString().split("").sort().reverse().join("");
+  +num.toString().split('').sort().reverse().join('');
 };
 
 /**
@@ -111,13 +111,13 @@ const sortDescending = (num) => {
 
 const reverseCase = (str) =>
   str
-    .split("")
+    .split('')
     .map((letter) =>
       letter === letter.toUpperCase()
         ? letter.toLowerCase()
         : letter.toUpperCase()
     )
-    .join("");
+    .join('');
 
 /**
  * Hiding the Card Number
@@ -126,7 +126,7 @@ const reverseCase = (str) =>
  ***************************************************************/
 
 function cardHide(card) {
-  const hidden = "*";
+  const hidden = '*';
   const slicedCardNum = card.slice(-4);
   const numOfAsterisks = card.length - 4;
   const asterisks = hidden.repeat(numOfAsterisks);
@@ -141,10 +141,10 @@ function cardHide(card) {
  ***************************************************************/
 
 function findNemo(sentence) {
-  const nemoIndex = sentence.split(" ").indexOf("Nemo") + 1;
-  let message = "";
+  const nemoIndex = sentence.split(' ').indexOf('Nemo') + 1;
+  let message = '';
 
-  sentence.search("nemo") && nemoIndex !== 0
+  sentence.search('nemo') && nemoIndex !== 0
     ? (message = `I found Nemo at ${nemoIndex}!`)
     : (message = "I can't find Nemo :(");
 
@@ -158,12 +158,12 @@ function findNemo(sentence) {
  ***************************************************************/
 
 function getMiddle(str) {
-  const strChar = str.split("");
+  const strChar = str.split('');
   const strCharLength = strChar.length;
 
   const middleCharacters =
     strCharLength % 2 === 0
-      ? [strChar[strCharLength / 2 - 1], strChar[strCharLength / 2]].join("")
+      ? [strChar[strCharLength / 2 - 1], strChar[strCharLength / 2]].join('')
       : strChar[Math.floor(strCharLength / 2)];
 
   return middleCharacters;
@@ -176,17 +176,17 @@ function getMiddle(str) {
  ***************************************************************/
 
 function reverseOdd(str) {
-  const eachWord = str.split(" ");
+  const eachWord = str.split(' ');
 
   const newArr = eachWord.map((word) => {
     if (word.length % 2 !== 0) {
-      return word.split("").reverse().join("");
+      return word.split('').reverse().join('');
     } else {
       return word;
     }
   });
 
-  return newArr.join(" ");
+  return newArr.join(' ');
 }
 
 /**
@@ -224,7 +224,7 @@ const aVeryBigSum = (ar) => ar.reduce((acc, val) => (acc += val));
 
 function drawTriangle(str) {
   for (let i = 0; i < 7; i++) {
-    console.log((str += "#"));
+    console.log((str += '#'));
   }
 }
 
@@ -240,11 +240,11 @@ function drawTriangle(str) {
 function fizzBizz() {
   for (let i = 1; i <= 100; i++) {
     if (i % 5 === 0 && i % 3 === 0) {
-      console.log("fizzBuzz");
+      console.log('fizzBuzz');
     } else if (i % 5 === 0 && i % 3 !== 0) {
-      console.log("buzz");
+      console.log('buzz');
     } else if (i % 3 === 0) {
-      console.log("fizz");
+      console.log('fizz');
     } else {
       console.log(i);
     }
@@ -258,8 +258,8 @@ function fizzBizz() {
  ***************************************************************/
 
 function drawChessBoard(sizeNum) {
-  const evenStringHash = " #";
-  const oddStringHash = "# ";
+  const evenStringHash = ' #';
+  const oddStringHash = '# ';
 
   for (let i = 0; i < sizeNum; i++) {
     if (i % 2 == 0) {
@@ -277,8 +277,8 @@ function drawChessBoard(sizeNum) {
  ***************************************************************/
 
 const drawGarden = (num) => {
-  const trees = [" 🌳", " 🌲", " 🎋", " 🌴", " 🎄"];
-  const flowers = [" 🌺", " 🌻", " 🌷", " 🌸", " 🌹"];
+  const trees = [' 🌳', ' 🌲', ' 🎋', ' 🌴', ' 🎄'];
+  const flowers = [' 🌺', ' 🌻', ' 🌷', ' 🌸', ' 🌹'];
 
   for (let i = 0; i < num; i++) {
     i % 2 == 0
@@ -341,16 +341,16 @@ const diagonalDifference = (arr) => {
  ***************************************************************/
 
 const staircase = (n) => {
-  let space = " ";
-  let topStair = space.repeat(n - 1).split("");
-  topStair.push("#");
-  console.log(topStair.join(""));
+  let space = ' ';
+  let topStair = space.repeat(n - 1).split('');
+  topStair.push('#');
+  console.log(topStair.join(''));
 
   for (let i = n; i > 1 && i <= n; i--) {
-    let isHash = (element) => element === "#";
+    let isHash = (element) => element === '#';
     let found = topStair.findIndex(isHash);
-    topStair.splice(found - 1, 1, "#");
-    console.log(topStair.join(""));
+    topStair.splice(found - 1, 1, '#');
+    console.log(topStair.join(''));
   }
 };
 
@@ -417,8 +417,8 @@ function birthdayCakeCandles(candles) {
  ***************************************************************/
 
 const timeConversion = (timeString) => {
-  const PM = timeString.match("PM") ? true : false;
-  timeString = timeString.split(":");
+  const PM = timeString.match('PM') ? true : false;
+  timeString = timeString.split(':');
   const min = timeString[1];
 
   let hour;
@@ -428,20 +428,20 @@ const timeConversion = (timeString) => {
     hour = timeString[0];
 
     if (+hour === 12) {
-      hour = "12";
+      hour = '12';
     } else {
       hour = 12 + +timeString[0];
     }
 
-    sec = timeString[2].replace("PM", "");
+    sec = timeString[2].replace('PM', '');
   } else {
     hour = timeString[0];
 
     if (+hour === 12) {
-      hour = "00";
+      hour = '00';
     }
 
-    sec = timeString[2].replace("AM", "");
+    sec = timeString[2].replace('AM', '');
   }
 
   return `${hour}:${min}:${sec}`;
@@ -478,12 +478,12 @@ function gradingStudents(grades) {
  ***************************************************************/
 
 function detectBrowser(userAgent) {
-  if (userAgent.includes("Chrome")) {
-    return "Google Chrome";
-  } else if (userAgent.includes("Firefox")) {
-    return "Mozilla Firefox";
+  if (userAgent.includes('Chrome')) {
+    return 'Google Chrome';
+  } else if (userAgent.includes('Firefox')) {
+    return 'Mozilla Firefox';
   } else {
-    return "Internet Explorer";
+    return 'Internet Explorer';
   }
 }
 
@@ -494,7 +494,7 @@ function detectBrowser(userAgent) {
  ***************************************************************/
 
 const evenOrOdd = (str) => {
-  const individualNumStrings = str.split("");
+  const individualNumStrings = str.split('');
   const individualNumIntegers = individualNumStrings.map((number) => +number);
 
   const evenSum = individualNumIntegers
@@ -506,10 +506,10 @@ const evenOrOdd = (str) => {
     .reduce((a, b) => a + b);
 
   return oddSum > evenSum
-    ? "Odd is greater than Even"
+    ? 'Odd is greater than Even'
     : evenSum > oddSum
-    ? "Even is greater than Odd"
-    : "Even and Odd are the same";
+    ? 'Even is greater than Odd'
+    : 'Even and Odd are the same';
 };
 
 /**
@@ -548,7 +548,7 @@ const myPi = (n) => +Math.PI.toFixed(n);
  */
 
 const highestDigit = (number) => {
-  const numArrayStrings = number.toString().split("");
+  const numArrayStrings = number.toString().split('');
   const numArrayInts = numArrayStrings.map((num) => +num);
 
   return Math.max(...numArrayInts);
@@ -562,33 +562,33 @@ const highestDigit = (number) => {
 
 const generation = (x, y) => {
   const family = {
-    "-3": {
-      m: "great grandfather",
-      f: "great grandmother",
+    '-3': {
+      m: 'great grandfather',
+      f: 'great grandmother',
     },
-    "-2": {
-      m: "grandfather",
-      f: "grandmother",
+    '-2': {
+      m: 'grandfather',
+      f: 'grandmother',
     },
-    "-1": {
-      m: "father",
-      f: "mother",
+    '-1': {
+      m: 'father',
+      f: 'mother',
     },
     0: {
-      m: "me!",
-      f: "me!",
+      m: 'me!',
+      f: 'me!',
     },
     1: {
-      m: "son",
-      f: "daughter",
+      m: 'son',
+      f: 'daughter',
     },
     2: {
-      m: "grandson",
-      f: "granddaughter",
+      m: 'grandson',
+      f: 'granddaughter',
     },
     3: {
-      m: "great grandson",
-      f: "great granddaughter",
+      m: 'great grandson',
+      f: 'great granddaughter',
     },
   };
   return family[x][y];
@@ -635,13 +635,13 @@ function nameScore(name) {
   }, 0);
 
   return score <= 60
-    ? "NOT TOO GOOD"
+    ? 'NOT TOO GOOD'
     : 61 <= score && score <= 300
-    ? "PRETTY GOOD"
+    ? 'PRETTY GOOD'
     : 301 <= score && score <= 599
-    ? "VERY GOOD"
+    ? 'VERY GOOD'
     : score >= 600
-    ? "THE BEST"
+    ? 'THE BEST'
     : null;
 }
 
@@ -669,7 +669,7 @@ const arrayOperation = (x, y, n) => {
 const toArray = (num) =>
   num
     .toString()
-    .split("")
+    .split('')
     .map((num) => +num);
 
 /**
@@ -677,7 +677,7 @@ const toArray = (num) =>
  * @param {array} array
  * @returns original array of integers joined into one number
  */
-const toNumber = (arr) => +arr.map((num) => num.toString()).join("");
+const toNumber = (arr) => +arr.map((num) => num.toString()).join('');
 
 /**
  * Count Ones in a 2D Array
@@ -701,8 +701,8 @@ const countOnes = (matrix) => {
  */
 function signYourName(obj) {
   Object.seal(obj);
-  obj.yourSignature = "Whatever";
-  obj.spouseSignature = "Nice Try";
+  obj.yourSignature = 'Whatever';
+  obj.spouseSignature = 'Nice Try';
   return obj;
 }
 
@@ -726,7 +726,7 @@ const hasSyncopation = (s) => {
   const stringArray = [...s];
 
   return stringArray.some((char, index) => {
-    return char === "#" && (index + 1) % 2 === 0;
+    return char === '#' && (index + 1) % 2 === 0;
   });
 };
 
@@ -757,7 +757,7 @@ function makesTen(a, b) {
  * @returns "odd" or "even"
  */
 const factorGroup = (num) =>
-  Number.isInteger(Math.sqrt(num)) ? "odd" : "even";
+  Number.isInteger(Math.sqrt(num)) ? 'odd' : 'even';
 
 /**
  * Determine how many walls one can paint by determining surface areas
@@ -789,7 +789,7 @@ const areaOfCountry = (name, area) => {
   let countryMass = (area / 148940000).toFixed(4);
   let countryMassStr;
 
-  if (countryMass[2] === "0") {
+  if (countryMass[2] === '0') {
     countryMassStr = countryMass.substring(3);
   } else {
     countryMassStr = countryMass.substring(2);
@@ -798,12 +798,12 @@ const areaOfCountry = (name, area) => {
   let countryMassArr = [...countryMassStr];
 
   if (countryMassArr.length === 3) {
-    countryMassArr.splice(1, 0, ".");
+    countryMassArr.splice(1, 0, '.');
   } else {
-    countryMassArr.splice(2, 0, ".");
+    countryMassArr.splice(2, 0, '.');
   }
 
-  const countryMassFormattedStr = parseFloat(countryMassArr.join(""));
+  const countryMassFormattedStr = parseFloat(countryMassArr.join(''));
 
   return `${name} is ${countryMassFormattedStr}% of the total world's landmass`;
 };
@@ -820,17 +820,37 @@ const nextInLine = (arr, num) => {
     arr.shift();
     return arr;
   } else {
-    return "No array has been selected";
+    return 'No array has been selected';
   }
 };
+
+/**
+ * Is This a Right Angled Triangle?
+ * @param {int} x
+ * @param {int} y
+ * @param {int} z
+ * @returns boolean
+ */
+function rightTriangle(x, y, z) {
+  const [a, b, c] = [x, y, z].sort((a, b) => a - b);
+  const aSquared = Math.pow(a, 2);
+  const bSquared = Math.pow(b, 2);
+  const cSquared = Math.pow(c, 2);
+
+  if (aSquared <= 0 || bSquared <= 0 || cSquared <= 0) return false;
+
+  return aSquared + bSquared == cSquared;
+}
 
 // Test function: insert test functions here
 function test() {
   console.log(
-    nextInLine([5, 6, 7, 8, 9], 1), // ➞ [6, 7, 8, 9, 1]
-    nextInLine([7, 6, 3, 23, 17], 10), // ➞ [6, 3, 23, 17, 10]
-    nextInLine([1, 10, 20, 42], 6), // ➞ [10, 20, 42, 6]
-    nextInLine([], 6) // ➞ "No array has been selected"
+    rightTriangle(3, 4, 5), // ➞ true
+    // This is the classic example of a "nice" right angled triangle.
+    rightTriangle(145, 105, 100), // ➞ true
+    // This is a less famous example.
+    rightTriangle(70, 130, 110) // ➞ false
+    // This isn't a right angled triangle.
   );
 }
 
