@@ -842,15 +842,57 @@ function rightTriangle(x, y, z) {
   return aSquared + bSquared == cSquared;
 }
 
+/**
+ * Total Sales of Product
+ * @param {arr} sales
+ * @param {string} product
+ * @returns How many items were sold
+ */
+const totalSales = (sales, product) => {
+  const itemIndex = sales[0].indexOf(product);
+  let count = 0;
+  let response;
+
+  for (let i = 1; i < sales.length; i++) {
+    count += sales[i][itemIndex];
+  }
+
+  itemIndex === -1 ? (response = 'Product not found') : (response = count);
+  return response;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    rightTriangle(3, 4, 5), // ➞ true
-    // This is the classic example of a "nice" right angled triangle.
-    rightTriangle(145, 105, 100), // ➞ true
-    // This is a less famous example.
-    rightTriangle(70, 130, 110) // ➞ false
-    // This isn't a right angled triangle.
+    totalSales(
+      [
+        ['A', 'B', 'C'],
+        [2, 7, 1],
+        [3, 6, 6],
+        [4, 5, 5],
+      ],
+      'A'
+    ), // ➞ 9
+    // 2 + 3 + 4 = 9
+    totalSales(
+      [
+        ['A', 'B', 'C'],
+        [2, 7, 1],
+        [3, 6, 6],
+        [4, 5, 5],
+      ],
+      'C'
+    ), // ➞ 12
+    // 1 + 6 + 5 = 12
+    totalSales(
+      [
+        ['A', 'B', 'C'],
+        [2, 7, 1],
+        [3, 6, 6],
+        [4, 5, 5],
+      ],
+      'D'
+    ) // ➞ "Product not found"
   );
 }
 
