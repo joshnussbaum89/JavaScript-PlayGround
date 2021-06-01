@@ -868,16 +868,22 @@ const totalSales = (sales, product) => {
  */
 const checkPalindrome = (str) => str === str.split('').reverse().join('');
 
+/**
+ * Array indexing
+ * @param {array} arr
+ * @param {int} i
+ * @returns value at given index
+ */
+const valueAt = (arr, i) => arr[Math.floor(i)];
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    checkPalindrome('mom'), // ➞ true
+    valueAt([1, 2, 3, 4, 5, 6], 10 / 2), // ➞ 6
 
-    checkPalindrome('scary'), // ➞ false
+    valueAt([1, 2, 3, 4, 5, 6], 8.0 / 2), // ➞ 5
 
-    checkPalindrome('reviver'), // ➞ true
-
-    checkPalindrome('stressed') // ➞ false
+    valueAt([1, 2, 3, 4], 6.535355314 / 2) // ➞ 4
   );
 }
 
