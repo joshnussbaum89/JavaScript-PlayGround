@@ -861,38 +861,23 @@ const totalSales = (sales, product) => {
   return response;
 };
 
+/**
+ * Check if string is the same backwards as it is forwards
+ * @param {string} str
+ * @returns {boolean} true or false
+ */
+const checkPalindrome = (str) => str === str.split('').reverse().join('');
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    totalSales(
-      [
-        ['A', 'B', 'C'],
-        [2, 7, 1],
-        [3, 6, 6],
-        [4, 5, 5],
-      ],
-      'A'
-    ), // ➞ 9
-    // 2 + 3 + 4 = 9
-    totalSales(
-      [
-        ['A', 'B', 'C'],
-        [2, 7, 1],
-        [3, 6, 6],
-        [4, 5, 5],
-      ],
-      'C'
-    ), // ➞ 12
-    // 1 + 6 + 5 = 12
-    totalSales(
-      [
-        ['A', 'B', 'C'],
-        [2, 7, 1],
-        [3, 6, 6],
-        [4, 5, 5],
-      ],
-      'D'
-    ) // ➞ "Product not found"
+    checkPalindrome('mom'), // ➞ true
+
+    checkPalindrome('scary'), // ➞ false
+
+    checkPalindrome('reviver'), // ➞ true
+
+    checkPalindrome('stressed') // ➞ false
   );
 }
 
