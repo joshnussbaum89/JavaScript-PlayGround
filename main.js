@@ -876,15 +876,23 @@ const checkPalindrome = (str) => str === str.split('').reverse().join('');
  */
 const valueAt = (arr, i) => arr[Math.floor(i)];
 
+/**
+ * Matchstick Houses
+ * @param {int} step
+ * @returns number of matches used to connect steps (houses)
+ */
+const matchHouses = (step) => (step === 0 ? 0 : step * 5 + 1);
+
+/**
+ * Return Negative
+ * @param {int} n negative or positive number
+ * @returns If n is positive, return the negative of that number. Otherwise just return n
+ */
+const returnNegative = (n) => (n > 0 ? n * -1 : n);
+
 // Test function: insert test functions here
 function test() {
-  console.log(
-    valueAt([1, 2, 3, 4, 5, 6], 10 / 2), // ➞ 6
-
-    valueAt([1, 2, 3, 4, 5, 6], 8.0 / 2), // ➞ 5
-
-    valueAt([1, 2, 3, 4], 6.535355314 / 2) // ➞ 4
-  );
+  console.log();
 }
 
 test();
