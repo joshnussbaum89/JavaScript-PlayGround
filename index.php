@@ -34,6 +34,9 @@ function animals($chickens, $cows, $pigs)
     return $legTotal;
 }
 
+/**
+ * Return first item in array
+ */
 function getFirstValue($array)
 {
     return $array[0];

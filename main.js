@@ -890,9 +890,36 @@ const matchHouses = (step) => (step === 0 ? 0 : step * 5 + 1);
  */
 const returnNegative = (n) => (n > 0 ? n * -1 : n);
 
+/**
+ * @param {string} str
+ * @returns string without 'fog' letters in it
+ */
+const clearFog = (str) =>
+  str.includes('f') ||
+  str.includes('o') ||
+  str.includes('g') ||
+  str.includes('F') ||
+  str.includes('O') ||
+  str.includes('G')
+    ? [...str]
+        .filter((char) => char !== 'f')
+        .filter((char) => char !== 'o')
+        .filter((char) => char !== 'g')
+        .filter((char) => char !== 'F')
+        .filter((char) => char !== 'O')
+        .filter((char) => char !== 'G')
+        .join('')
+    : "It's a clear day!";
+
 // Test function: insert test functions here
 function test() {
-  console.log();
+  console.log(
+    clearFog('sky'), // ➞ "It's a clear day!"
+
+    clearFog('fogfogFFfoooofftogffreogffesGgfOogfog'), // ➞ "trees"
+
+    clearFog('fogFogFogffoObirdsanffodthebffoeffoesGGGfOgFog') // ➞ "birdsandthebees"
+  );
 }
 
 test();
