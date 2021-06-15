@@ -42,8 +42,25 @@ function getFirstValue($array)
     return $array[0];
 }
 
-echo getFirstValue([1, 2, 3]); // ➞ 1
+/**
+ * Area of a triangle
+ */
+function triArea($base, $height)
+{
+    $area = ($base * $height) / 2;
+    return $area;
+}
 
-echo getFirstValue([80, 5, 100]); // ➞ 80
+/**
+ * Convert hours to seconds
+ */
+function howManySeconds($hours)
+{
+    return $hours * 60 * 60;
+}
 
-echo getFirstValue([-500, 0, 50]); // ➞ -500
+echo howManySeconds(2) . PHP_EOL; // ➞ 7200
+
+echo howManySeconds(10) . PHP_EOL; // ➞ 36000
+
+echo howManySeconds(24) . PHP_EOL; // ➞ 86400

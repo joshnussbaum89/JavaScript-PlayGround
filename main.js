@@ -894,22 +894,21 @@ const returnNegative = (n) => (n > 0 ? n * -1 : n);
  * @param {string} str
  * @returns string without 'fog' letters in it
  */
-const clearFog = (str) =>
-  str.includes('f') ||
-  str.includes('o') ||
-  str.includes('g') ||
-  str.includes('F') ||
-  str.includes('O') ||
-  str.includes('G')
-    ? [...str]
-        .filter((char) => char !== 'f')
-        .filter((char) => char !== 'o')
-        .filter((char) => char !== 'g')
-        .filter((char) => char !== 'F')
-        .filter((char) => char !== 'O')
-        .filter((char) => char !== 'G')
-        .join('')
+const clearFog = (str) => {
+  const regex = /[fogFOG]/gm;
+
+  return regex.test(str)
+    ? [...str].map((char) => char.replace(regex, '')).join('')
     : "It's a clear day!";
+};
+
+/**
+ * Covert to Decimal Notation
+ * @param {array} perc array of percentage strings
+ * @returns array with percentages coverted to decimal notation
+ */
+const convertToDecimal = (perc) =>
+  perc.map((num) => parseFloat(num.replace('%', ' ')) / 100);
 
 // Test function: insert test functions here
 function test() {
