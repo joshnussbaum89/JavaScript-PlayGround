@@ -59,8 +59,36 @@ function howManySeconds($hours)
     return $hours * 60 * 60;
 }
 
-echo howManySeconds(2) . PHP_EOL; // ➞ 7200
+/**
+ * Split Item Codes
+ */
+function splitCode($item)
+{
+    // split string into array of elements
+    $charArray = str_split($item);
+    $letters = [];
+    $numbers = [];
 
-echo howManySeconds(10) . PHP_EOL; // ➞ 36000
+    // check if element is a number or letter and push to $letters or $numbers arrays accordingly
+    for ($i = 0; $i < count($charArray); $i++) {
+        if (is_numeric($charArray[$i])) {
+            array_push($numbers, $charArray[$i]);
+        } else {
+            array_push($letters, $charArray[$i]);
+        }
+    }
 
-echo howManySeconds(24) . PHP_EOL; // ➞ 86400
+    // covert string to number and join characters
+    $formattedNum = intval(join($numbers));
+    // join characters
+    $formattedString = join($letters);
+
+    // return formatted array
+    return [$formattedString, $formattedNum];
+}
+
+print_r(splitCode("TEWA8392")) . PHP_EOL; // ➞ ["TEWA", 8392]
+
+print_r(splitCode("MMU778")) . PHP_EOL; // ➞ ["MMU", 778]
+
+print_r(splitCode("SRPE5532")) . PHP_EOL; // ➞ ["SRPE", 5532]
