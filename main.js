@@ -910,14 +910,38 @@ const clearFog = (str) => {
 const convertToDecimal = (perc) =>
   perc.map((num) => parseFloat(num.replace('%', ' ')) / 100);
 
+/**
+ * Sum of Resistance in Series Circuits
+ * @param {array} arr array of values resistance that are connected in series
+ * @returns total resistance of the circuit in 'ohms'
+ */
+const seriesResistance = (arr) => {
+  let message;
+
+  const total = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue
+  );
+
+  total <= 1 ? (message = `${total} ohm`) : (message = `${total} ohms`);
+
+  return message;
+};
+
+/**
+ * Leap Year
+ * @param {int} year
+ * @returns true or false depending on whether or not 'year' is a leap year
+ */
+const leapYear = (year) => year % 4 === 0;
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    clearFog('sky'), // ➞ "It's a clear day!"
+    leapYear(1990), // ➞ false
 
-    clearFog('fogfogFFfoooofftogffreogffesGgfOogfog'), // ➞ "trees"
+    leapYear(1924), // ➞ true
 
-    clearFog('fogFogFogffoObirdsanffodthebffoeffoesGGGfOgFog') // ➞ "birdsandthebees"
+    leapYear(2021) // ➞ false
   );
 }
 
