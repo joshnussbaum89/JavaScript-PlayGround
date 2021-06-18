@@ -934,14 +934,39 @@ const seriesResistance = (arr) => {
  */
 const leapYear = (year) => year % 4 === 0;
 
+/**
+ * Find lowest and highest number in array
+ * @param {array} arr
+ * @returns lowest and highest number in new array
+ */
+const minMax = (arr) => {
+  const sortedArray = arr.sort((a, b) => a - b);
+  const lowestNumInArray = sortedArray[0];
+  const highestNumInArray = sortedArray[sortedArray.length - 1];
+
+  return [lowestNumInArray, highestNumInArray];
+  // Or just use Math.min(...arr) and Math.max(...arr)
+};
+
+/**
+ * Miserable parody of a calculator
+ * @param {*} str
+ * @returns evaluated math expression
+ */
+function calculator(str) {
+  return eval(str);
+}
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    leapYear(1990), // ➞ false
+    calculator('23+4'), // ➞ 27
 
-    leapYear(1924), // ➞ true
+    calculator('45-15'), // ➞ 30
 
-    leapYear(2021) // ➞ false
+    calculator('13+2-5*2'), // ➞ 5
+
+    calculator('49/7*2-3') // ➞ 11
   );
 }
 
