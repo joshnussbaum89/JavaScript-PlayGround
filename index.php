@@ -87,8 +87,24 @@ function splitCode($item)
     return [$formattedString, $formattedNum];
 }
 
-print_r(splitCode("TEWA8392")) . PHP_EOL; // ➞ ["TEWA", 8392]
+/**
+ * Takes two arrays of integers and returns them as coordinates
+ */
+function convertCartesian($x, $y)
+{
+    // Store coordinates
+    $coordinates = [];
 
-print_r(splitCode("MMU778")) . PHP_EOL; // ➞ ["MMU", 778]
+    // Push items from their relative indexes to $coordinates array
+    for ($i = 0; $i < count($x); $i++) {
+        array_push($coordinates, [$x[$i], $y[$i]]);
+    }
 
-print_r(splitCode("SRPE5532")) . PHP_EOL; // ➞ ["SRPE", 5532]
+    return $coordinates;
+}
+
+print_r(convertCartesian([1, 5, 3, 3, 4], [5, 8, 9, 1, 0])) . PHP_EOL;
+// ➞ [[1, 5], [5, 8], [3, 9], [3, 1], [4, 0]]
+
+print_r(convertCartesian([9, 8, 3], [1, 1, 1])) . PHP_EOL;
+// ➞ [[9, 1], [8, 1], [3, 1]]
