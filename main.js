@@ -957,16 +957,28 @@ function calculator(str) {
   return eval(str);
 }
 
+/**
+ * @param {array} arr 
+ * @returns Absolute sum of array
+ */
+const getAbsSum = (arr) => {
+  const absoluteSum = arr
+    .map((num) => (Math.sign(num) === -1 ? Math.abs(num) : num))
+    .reduce((accumulator, currentValue) => accumulator + currentValue);
+
+  return absoluteSum;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    calculator('23+4'), // ➞ 27
+    getAbsSum([2, -1, 4, 8, 10]), // ➞ 25
 
-    calculator('45-15'), // ➞ 30
+    getAbsSum([-3, -4, -10, -2, -3]), // ➞ 22
 
-    calculator('13+2-5*2'), // ➞ 5
+    getAbsSum([2, 4, 6, 8, 10]), // ➞ 30
 
-    calculator('49/7*2-3') // ➞ 11
+    getAbsSum([-1]) // ➞ 1
   );
 }
 
