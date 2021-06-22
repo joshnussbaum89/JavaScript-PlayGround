@@ -103,8 +103,23 @@ function convertCartesian($x, $y)
     return $coordinates;
 }
 
-print_r(convertCartesian([1, 5, 3, 3, 4], [5, 8, 9, 1, 0])) . PHP_EOL;
-// ➞ [[1, 5], [5, 8], [3, 9], [3, 1], [4, 0]]
+/**
+ * Lodash Function
+ * @return arr array with specified number (num) of items removed
+ */
+function dropRight($arr, $num = 1)
+{
+    for ($i = 0; $i < $num; $i++) {
+        array_pop($arr);
+    }
 
-print_r(convertCartesian([9, 8, 3], [1, 1, 1])) . PHP_EOL;
-// ➞ [[9, 1], [8, 1], [3, 1]]
+    return $arr;
+}
+
+print_r(dropRight([1, 2, 3])) . PHP_EOL; // ➞ [1, 2]
+
+print_r(dropRight([1, 2, 3], 2)) . PHP_EOL; // ➞ [1]
+
+print_r(dropRight([1, 2, 3], 5)) . PHP_EOL; // ➞ []
+
+print_r(dropRight([1, 2, 3], 0)) . PHP_EOL; // ➞ [1, 2, 3]

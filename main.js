@@ -975,11 +975,13 @@ const getAbsSum = (arr) => {
  * @param {int} num
  * @returns same array with specified number (num) of items removed
  */
-const dropRight = (arr, num = 1) => {
-  for (let i = 0; i < num; i++) arr.pop();
+function dropRight(arr, num = 1) {
+  for (let i = 0; i < num; i++) {
+    arr.pop();
+  }
 
   return arr;
-};
+}
 
 // Test function: insert test functions here
 function test() {
