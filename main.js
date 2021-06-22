@@ -958,7 +958,7 @@ function calculator(str) {
 }
 
 /**
- * @param {array} arr 
+ * @param {array} arr
  * @returns Absolute sum of array
  */
 const getAbsSum = (arr) => {
@@ -969,16 +969,28 @@ const getAbsSum = (arr) => {
   return absoluteSum;
 };
 
+/**
+ * Lodash function
+ * @param {array} arr
+ * @param {int} num
+ * @returns same array with specified number (num) of items removed
+ */
+const dropRight = (arr, num = 1) => {
+  for (let i = 0; i < num; i++) arr.pop();
+
+  return arr;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    getAbsSum([2, -1, 4, 8, 10]), // ➞ 25
+    dropRight([1, 2, 3]), // ➞ [1, 2]
 
-    getAbsSum([-3, -4, -10, -2, -3]), // ➞ 22
+    dropRight([1, 2, 3], 2), // ➞ [1]
 
-    getAbsSum([2, 4, 6, 8, 10]), // ➞ 30
+    dropRight([1, 2, 3], 5), // ➞ []
 
-    getAbsSum([-1]) // ➞ 1
+    dropRight([1, 2, 3], 0) // ➞ [1, 2, 3]
   );
 }
 
