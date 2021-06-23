@@ -983,17 +983,19 @@ function dropRight(arr, num = 1) {
   return arr;
 }
 
+/**
+ * Count Letter in string
+ * @param {string} string
+ * @param {string} letter
+ * @returns the amount of letters 'letter' in a string 'string'
+ */
+function countLetters(string, letter) {
+  return [...string].filter((char) => char === letter).length;
+}
+
 // Test function: insert test functions here
 function test() {
-  console.log(
-    dropRight([1, 2, 3]), // ➞ [1, 2]
-
-    dropRight([1, 2, 3], 2), // ➞ [1]
-
-    dropRight([1, 2, 3], 5), // ➞ []
-
-    dropRight([1, 2, 3], 0) // ➞ [1, 2, 3]
-  );
+  console.log(countLetters('Hey there buddy, Bob is coming to Boston!', 'o'));
 }
 
 test();
