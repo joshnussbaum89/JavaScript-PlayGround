@@ -78,7 +78,7 @@ function splitCode($item)
         }
     }
 
-    // covert string to number and join characters
+    // convert string to number and join characters
     $formattedNum = intval(join($numbers));
     // join characters
     $formattedString = join($letters);

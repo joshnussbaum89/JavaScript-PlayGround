@@ -993,9 +993,38 @@ function countLetters(string, letter) {
   return [...string].filter((char) => char === letter).length;
 }
 
+/**
+ * if 'a' is less than 6 (dice roll) away from 'b', it's possible to catch up to 'b' with a dice roll
+ * @param {number} a
+ * @param {number} b
+ * @returns true or false
+ */
+function possibleBonus(a, b) {
+  return b - a <= 6 && b - a >= 1;
+}
+
+/**
+ * Reverse Psychology
+ * @param {string} string
+ * @returns the opposite of what the strings command is
+ */
+function reversePsychology(string) {
+  const doNot = 'Do not ';
+
+  if (!string) {
+    return 'Do not do anything.';
+  } else {
+    return doNot.concat(`${string}.`);
+  }
+}
+
 // Test function: insert test functions here
 function test() {
-  console.log(countLetters('Hey there buddy, Bob is coming to Boston!', 'o'));
+  console.log(
+    reversePsychology('wash the dishes'), // ➞ "Do not wash the dishes."
+    reversePsychology('eat your lunch'), // ➞ "Do not eat your lunch."
+    reversePsychology('go to school') // ➞ "Do not go to school."
+  );
 }
 
 test();
