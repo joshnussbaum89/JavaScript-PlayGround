@@ -237,7 +237,7 @@ function drawTriangle(str) {
  4. Else return integer
  ***************************************************************/
 
-function fizzBizz() {
+function fizzBuzz() {
   for (let i = 1; i <= 100; i++) {
     if (i % 5 === 0 && i % 3 === 0) {
       console.log('fizzBuzz');
@@ -1018,12 +1018,26 @@ function reversePsychology(string) {
   }
 }
 
+/**
+ * isAvgWhole
+ * @param {array} arr
+ * @returns whether or not average of numbers in given array is a whole number
+ */
+const isAvgWhole = function (arr) {
+  const sumOfArrayElements = arr.reduce((num, acc) => (num += acc));
+  const isWholeNumber = sumOfArrayElements % arr.length === 0;
+
+  return isWholeNumber;
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    reversePsychology('wash the dishes'), // ➞ "Do not wash the dishes."
-    reversePsychology('eat your lunch'), // ➞ "Do not eat your lunch."
-    reversePsychology('go to school') // ➞ "Do not go to school."
+    isAvgWhole([1, 3]), // ➞ true
+    isAvgWhole([1, 2, 3, 4]), // ➞ false
+    isAvgWhole([1, 5, 6]), // ➞ true
+    isAvgWhole([1, 1, 1]), // ➞ true
+    isAvgWhole([9, 2, 2, 5]) // ➞ false
   );
 }
 
