@@ -1030,14 +1030,70 @@ const isAvgWhole = function (arr) {
   return isWholeNumber;
 };
 
+/**
+ * Rock Paper Scizzors function
+ */
+function rockPaperScissors() {
+  const moves = ['⛰️', '🧻', '✂️'];
+  const movesWords = ['rock', 'paper', 'scissors'];
+  const randomNum = Math.ceil(Math.random() * moves.length - 1);
+
+  for (let i = 0; i < movesWords.length; i++) {
+    setTimeout(() => {
+      console.log(movesWords[i]);
+    }, i * 1000);
+  }
+
+  setTimeout(() => {
+    console.log('shoot: ', moves[randomNum]);
+  }, 3000);
+}
+
+/**
+ * Find longest word in sentence
+ * @param {string} sentence
+ * @returns longest word
+ */
+const longestWord = (sentence) => {
+  const sortedWordsObj = sentence
+    .split(' ')
+    .map((word) => {
+      return { word, wordLength: word.length };
+    })
+    .sort((a, b) => a.wordLength - b.wordLength);
+
+  const wordLengthsArr = sortedWordsObj.map((word) => word.wordLength);
+  const biggestNumber = wordLengthsArr[wordLengthsArr.length - 1];
+  const biggestWord = sortedWordsObj.find(
+    (word) => word.wordLength == biggestNumber
+  ).word;
+
+  return biggestWord;
+};
+
+/**
+ * Personal finance strategy
+ * @param {integer} ati
+ * @returns an object containing a personal finance strategy for needs, wants and savings
+ */
+const fiftyThirtyTwenty = (ati) => {
+  const fiftyPercent = ati * 0.5;
+  const thirtyPercent = ati * 0.3;
+  const twentyPercent = ati * 0.2;
+
+  return {
+    Needs: fiftyPercent,
+    Wants: thirtyPercent,
+    Savings: twentyPercent,
+  };
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    isAvgWhole([1, 3]), // ➞ true
-    isAvgWhole([1, 2, 3, 4]), // ➞ false
-    isAvgWhole([1, 5, 6]), // ➞ true
-    isAvgWhole([1, 1, 1]), // ➞ true
-    isAvgWhole([9, 2, 2, 5]) // ➞ false
+    fiftyThirtyTwenty(10000), // ➞ { "Needs": 5000, "Wants": 3000, "Savings": 2000 }
+    fiftyThirtyTwenty(50000), // ➞ { "Needs": 25000, "Wants": 15000, "Savings": 10000 }
+    fiftyThirtyTwenty(13450) // ➞ { "Needs": 6725, "Wants": 4035, "Savings": 2690 }
   );
 }
 
