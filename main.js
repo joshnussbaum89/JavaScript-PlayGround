@@ -1031,7 +1031,7 @@ const isAvgWhole = function (arr) {
 };
 
 /**
- * Rock Paper Scizzors function
+ * Rock Paper Scissors function
  */
 function rockPaperScissors() {
   const moves = ['⛰️', '🧻', '✂️'];
@@ -1088,12 +1088,36 @@ const fiftyThirtyTwenty = (ati) => {
   };
 };
 
+/**
+ * Single Occurrence
+ * @param {string} str
+ * @returns Element in string that only occurs once
+ */
+function singleOccurrence(str) {
+  let uppercaseStr = str.toUpperCase();
+  let strArr = [...uppercaseStr];
+
+  return strArr
+    .sort()
+    .join('')
+    .replace(/(\w)\1+/g, '')
+    .substr(0, 1);
+}
+
+/**
+ * Years In One House
+ * @param {number} age
+ * @param {number} moves
+ * @returns Number of years lived in each house depending on how many times person moved
+ */
+const yearsInOneHouse = (age, moves) => Math.round(age / (moves + 1));
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    fiftyThirtyTwenty(10000), // ➞ { "Needs": 5000, "Wants": 3000, "Savings": 2000 }
-    fiftyThirtyTwenty(50000), // ➞ { "Needs": 25000, "Wants": 15000, "Savings": 10000 }
-    fiftyThirtyTwenty(13450) // ➞ { "Needs": 6725, "Wants": 4035, "Savings": 2690 }
+    yearsInOneHouse(30, 1), // ➞ 15
+    yearsInOneHouse(15, 2), // ➞ 5
+    yearsInOneHouse(80, 0) // ➞ 80
   );
 }
 
