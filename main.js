@@ -1112,12 +1112,25 @@ function singleOccurrence(str) {
  */
 const yearsInOneHouse = (age, moves) => Math.round(age / (moves + 1));
 
+/**
+ * Is Symmetrical
+ * @param {int} num
+ * @returns True or false depending on whether the number is the same normal as it is reversed
+ */
+const isSymmetrical = (num) => +[...num.toString()].reverse().join('') === num;
+
+/**
+ * Boolean to String
+ * @param {bool} flag
+ * @returns string value of boolean passed in as a parameter ex/ 'true' || 'false'
+ */
+const boolToString = (flag) => (flag === true ? 'true' : 'false');
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    yearsInOneHouse(30, 1), // ➞ 15
-    yearsInOneHouse(15, 2), // ➞ 5
-    yearsInOneHouse(80, 0) // ➞ 80
+    boolToString(true), // ➞ "true"
+    boolToString(false) // ➞ "false"
   );
 }
 
