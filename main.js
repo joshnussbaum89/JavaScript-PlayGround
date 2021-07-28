@@ -1126,11 +1126,41 @@ const isSymmetrical = (num) => +[...num.toString()].reverse().join('') === num;
  */
 const boolToString = (flag) => (flag === true ? 'true' : 'false');
 
+/**
+ * ASCII Charts (Part 1: Progress Bar)
+ * @param {string} symbol
+ * @param {int} progress
+ * @returns Formatted string with progress bar and percentage
+ */
+const progressBar = (symbol, progress) => {
+  let bar = '';
+  const spaces = ' ';
+  const amountLoaded = progress / 10;
+  const amountNotLoaded = 10 - amountLoaded;
+
+  for (let i = 0; i < amountLoaded; i++) {
+    bar += symbol;
+  }
+
+  return progress === 100
+    ? `|${bar}${spaces.repeat(amountNotLoaded)}| Completed!`
+    : `|${bar}${spaces.repeat(amountNotLoaded)}| Progress: ${progress}%`;
+};
+
+/**
+ * Century Crisis
+ * @param {int} population
+ * @param {int} n
+ * @returns The number of people (population) in (n) years
+ */
+const futurePeople = (population, n) => population + n * 360;
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    boolToString(true), // ➞ "true"
-    boolToString(false) // ➞ "false"
+    futurePeople(256, 2), // ➞ 976
+    futurePeople(3248, 6), // ➞ 5408
+    futurePeople(5240, 3) // ➞ 6320
   );
 }
 
