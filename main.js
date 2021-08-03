@@ -1155,12 +1155,63 @@ const progressBar = (symbol, progress) => {
  */
 const futurePeople = (population, n) => population + n * 360;
 
+/**
+ * Range
+ * @param {int} start
+ * @param {int} end
+ * @returns an array containing all the numbers from 'start' up to and including 'end'
+ */
+const range = (start, end, step = 1) => {
+  let i, j;
+  let interval = Math.abs(step);
+  let arr = [];
+
+  // Loop through start and end numbers based on interval
+  const loopThroughNumbers = () => {
+    for (i; i <= j; i += interval) {
+      arr.push(i);
+    }
+  };
+
+  // Ascending numbers
+  if (end > start) {
+    if (interval !== step) {
+      return 'Please enter a positive step number!';
+    } else {
+      i = start;
+      j = end;
+
+      loopThroughNumbers();
+    }
+  }
+  // Descending numbers
+  else {
+    if (interval === step && step !== 1) {
+      return 'Please enter a negative step number!';
+    } else {
+      i = end;
+      j = start;
+
+      loopThroughNumbers();
+    }
+    arr.reverse();
+  }
+
+  return arr;
+};
+
+/**
+ * Sum
+ * @param {array} arr
+ * @returns sum of numbers in an array
+ */
+const sum = (arr) => {};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    futurePeople(256, 2), // ➞ 976
-    futurePeople(3248, 6), // ➞ 5408
-    futurePeople(5240, 3) // ➞ 6320
+    range(1, 10), // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    range(5, 2) // → [5, 4, 3, 2]
   );
 }
 
