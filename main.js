@@ -1205,14 +1205,55 @@ const range = (start, end, step = 1) => {
  * @param {array} arr
  * @returns sum of numbers in an array
  */
-const sum = (arr) => {};
+const sum = (arr) => {
+  return arr.reduce((acc, val) => acc + val);
+};
+
+/**
+ * Reverse Array
+ * @param {array} arr
+ * @returns A new array that is in reverse order from the array passed in as an argument
+ */
+const reverseArray = (arr) => {
+  let reversedArr = [];
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversedArr.push(arr[i]);
+  }
+
+  return reversedArr;
+};
+
+/**
+ * Reverse Array in Place
+ * @param {array} arr
+ * @returns the original array, modified to be returned in reverse order
+ */
+const reverseArrayInPlace = (arr) => {
+  let reverseIndex = arr.length - 1;
+
+  // keep track of items to be swapped
+  for (let i = 0; i <= Math.floor(arr.length / 2); i++) {
+    let innerElement = arr[i];
+    let outerElement = arr[arr.length - 1 - i];
+
+    // swap array items based on inner and outer indices
+    arr.splice(i, 1, outerElement);
+    arr.splice(reverseIndex, 1, innerElement);
+
+    // every loop, 'i' is incremented and 'reverseIndex' is decremented
+    reverseIndex--;
+
+    // If array has even amount of items
+    if (i === reverseIndex) break;
+  }
+
+  return arr;
+};
 
 // Test function: insert test functions here
 function test() {
-  console.log(
-    range(1, 10), // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    range(5, 2) // → [5, 4, 3, 2]
-  );
+  console.log(reverseArrayInPlace([5, 4, 3, 2, 1, 0, -1]));
 }
 
 test();
