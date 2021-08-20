@@ -1251,9 +1251,117 @@ const reverseArrayInPlace = (arr) => {
   return arr;
 };
 
+const arrayToList = (array) => {
+  let list = null;
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    list = { value: array[i], rest: list };
+  }
+
+  return list;
+};
+
+const listToArray = (list) => {
+  let listArray = [];
+
+  for (let node = list; node; node = node.rest) {
+    listArray.push(node.value);
+  }
+
+  return listArray;
+};
+
+/**
+ * Scrabble
+ * @param {string} word
+ * @returns The word entered but with Scrabble points calculated
+ */
+const scrabble = (word) => {
+  const points = {
+    A: 1,
+    B: 3,
+    C: 3,
+    D: 2,
+    E: 1,
+    F: 4,
+    G: 2,
+    H: 4,
+    I: 1,
+    J: 8,
+    K: 5,
+    L: 1,
+    M: 3,
+    N: 1,
+    O: 1,
+    P: 3,
+    Q: 10,
+    R: 1,
+    S: 1,
+    T: 1,
+    U: 1,
+    V: 4,
+    W: 4,
+    X: 8,
+    Y: 4,
+    Z: 10,
+  };
+
+  return [...word.toUpperCase()].reduce((acc, letter) => {
+    return acc + points[letter];
+  }, 0);
+};
+
+let obj = {
+  here: {
+    is: 'an',
+  },
+  object: 2,
+};
+
+let anotherObj = {
+  here: {
+    is: 'an',
+  },
+  object: 2,
+};
+
+/**
+ * Deep Equal
+ * @param {object} objOne
+ * @param {object} objTwo
+ * @returns true if both arguments are completely equal
+ */
+function deepEqual(objOne, objTwo) {
+  const objOneIsObject = typeof objOne === 'object' && objOne !== null;
+  const objTwoIsObject = typeof objTwo === 'object' && objTwo !== null;
+  const objOneKeys = Object.keys(objOne);
+  const objTwoKeys = Object.keys(objTwo);
+
+  if (objOneIsObject && objTwoIsObject) {
+    return JSON.stringify(objOneKeys) === JSON.stringify(objTwoKeys);
+  } else {
+    return objOne === objTwo;
+  }
+}
+
 // Test function: insert test functions here
 function test() {
-  console.log(reverseArrayInPlace([5, 4, 3, 2, 1, 0, -1]));
+  console.log(
+    deepEqual(
+      {
+        here: {
+          is: 'an',
+        },
+        object: 2,
+      },
+      {
+        here: {
+          is: 'an',
+        },
+        object: 2,
+      }
+    )
+  );
 }
 
 test();
