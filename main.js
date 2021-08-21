@@ -1311,20 +1311,6 @@ const scrabble = (word) => {
   }, 0);
 };
 
-let obj = {
-  here: {
-    is: 'an',
-  },
-  object: 2,
-};
-
-let anotherObj = {
-  here: {
-    is: 'an',
-  },
-  object: 2,
-};
-
 /**
  * Deep Equal
  * @param {object} objOne
@@ -1344,23 +1330,32 @@ function deepEqual(objOne, objTwo) {
   }
 }
 
+/**
+ * Same Upside Down
+ * @param {string} strNum
+ * @returns boolean indicating whether number string is the same upside down as it is right side up
+ */
+const sameUpsidedown = (strNum) =>
+  [...strNum]
+    .reverse()
+    .map((letter) => {
+      if (letter === '9') {
+        return letter.replace('9', '6');
+      } else if (letter === '6') {
+        return letter.replace('6', '9');
+      }
+
+      return letter;
+    })
+    .join('') === strNum;
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    deepEqual(
-      {
-        here: {
-          is: 'an',
-        },
-        object: 2,
-      },
-      {
-        here: {
-          is: 'an',
-        },
-        object: 2,
-      }
-    )
+    sameUpsidedown('6090609'), // ➞ true
+    sameUpsidedown('9669'), // ➞ false
+    // Becomes 6996 when upside down.
+    sameUpsidedown('69069069') // ➞ true
   );
 }
 
