@@ -1349,13 +1349,28 @@ const sameUpsidedown = (strNum) =>
     })
     .join('') === strNum;
 
+/**
+ * Is Valid Date
+ * @param {number} d
+ * @param {number} m
+ * @param {number} y
+ * @returns boolean indicating if arguments illustrate a valid date
+ */
+function isValidDate(d, m, y) {
+  const date = new Date(y, m - 1, d);
+
+  return date.getMonth() === m - 1;
+}
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    sameUpsidedown('6090609'), // ➞ true
-    sameUpsidedown('9669'), // ➞ false
-    // Becomes 6996 when upside down.
-    sameUpsidedown('69069069') // ➞ true
+    isValidDate(35, 2, 2020), // ➞ false
+    isValidDate(8, 3, 2020), // ➞ true
+    isValidDate(31, 6, 1980), // ➞ false
+    isValidDate(27, 9, 1822), // true
+    isValidDate(29, 2, 2019), // false
+    isValidDate(1, 10, 1904) // true
   );
 }
 
