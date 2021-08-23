@@ -1362,15 +1362,34 @@ function isValidDate(d, m, y) {
   return date.getMonth() === m - 1;
 }
 
+/**
+ * Median
+ * @param {array} arr
+ * @returns Median of array
+ */
+function median(arr) {
+  const sortedArr = [...arr].sort((a, b) => a - b);
+  const firstMiddleNum = sortedArr[sortedArr.length / 2 - 1];
+  const secondMiddleNum = sortedArr[sortedArr.length / 2];
+  const middleNum = Math.floor(sortedArr.length / 2);
+
+  if (arr.length % 2 === 0) {
+    // even - get average of two middle numbers
+    return (firstMiddleNum + secondMiddleNum) / 2;
+  } else {
+    // odd - return middle number
+    return sortedArr[middleNum];
+  }
+}
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    isValidDate(35, 2, 2020), // ➞ false
-    isValidDate(8, 3, 2020), // ➞ true
-    isValidDate(31, 6, 1980), // ➞ false
-    isValidDate(27, 9, 1822), // true
-    isValidDate(29, 2, 2019), // false
-    isValidDate(1, 10, 1904) // true
+    median([2, 5, 6, 2, 6, 3, 4]), // ➞ 4
+    median([21.4323, 432.54, 432.3, 542.4567]), // ➞ 432.4
+    median([-23, -43, -29, -53, -67]), // ➞ -43
+    median([1, 2, 3, 4, 5]), // // 3
+    median([342, 98, 5456, 32, 786, 432, 890, 321]) // 387
   );
 }
 
