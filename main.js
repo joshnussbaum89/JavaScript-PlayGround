@@ -1382,14 +1382,39 @@ function median(arr) {
   }
 }
 
+/**
+ * Which Is Larger
+ * @param {function} f
+ * @param {function} g
+ * @returns The largest of the two values returned from the function arguments
+ */
+const whichIsLarger = (f, g) => {
+  const [firstFunc, secondFunc] = [f(), g()];
+
+  // if returned value is equal
+  if (firstFunc === secondFunc) return 'neither';
+
+  // check which returned value is bigger
+  return firstFunc > secondFunc ? 'f' : 'g';
+};
+
 // Test function: insert test functions here
 function test() {
   console.log(
-    median([2, 5, 6, 2, 6, 3, 4]), // ➞ 4
-    median([21.4323, 432.54, 432.3, 542.4567]), // ➞ 432.4
-    median([-23, -43, -29, -53, -67]), // ➞ -43
-    median([1, 2, 3, 4, 5]), // // 3
-    median([342, 98, 5456, 32, 786, 432, 890, 321]) // 387
+    whichIsLarger(
+      () => 5,
+      () => 10
+    ), // ➞ "g"
+
+    whichIsLarger(
+      () => 25,
+      () => 25
+    ), // ➞ "neither"
+
+    whichIsLarger(
+      () => 505050,
+      () => 5050
+    ) // ➞ "f"
   );
 }
 
