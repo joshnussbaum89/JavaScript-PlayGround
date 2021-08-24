@@ -58,7 +58,6 @@ function decode(string) {
 function calculateScore(games) {
   let abigailWins = 0;
   let bensonWins = 0;
-  let tiedRounds = 0;
 
   games.forEach((game) => {
     if (game[0] === game[1]) {
@@ -1398,24 +1397,80 @@ const whichIsLarger = (f, g) => {
   return firstFunc > secondFunc ? 'f' : 'g';
 };
 
+/**
+ * Flatten
+ * @param {array} arr
+ * @returns A 'flattened' array - similar to the flat() method
+ */
+const flatten = (arr) => {
+  return [...arr].reduce((a, b) => a.concat(b));
+};
+
+/**
+ * Loop
+ * -- Abstract a for loop into a more concise syntax
+ * -- ex/ loop(3, (n) => n > 0, (n) => n - 1, console.log);
+ * @param {any} value
+ * @param {function} test
+ * @param {function} update
+ * @param {function} body
+ */
+const loop = (value, test, update, body) => {
+  for (let i = value; test(i); i = update(i)) {
+    body(i);
+  }
+};
+
+/**
+ * Every
+ * @param {array} array
+ * @param {function} test
+ * @returns Boolean indicating if every array item meets test() criteria
+ */
+const every = (array, test) => {
+  for (let i = 0; i < array.length; i++) {
+    if (!test(array[i])) return false;
+  }
+
+  return true;
+};
+
+// prototypes
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// squared
+Array.prototype.square = function () {
+  return this.map((num) => Math.pow(num, 2));
+};
+
+// cubed
+Array.prototype.cube = function () {
+  return this.map((num) => Math.pow(num, 3));
+};
+
+// sum
+Array.prototype.sum = function () {
+  return this.reduce((currentValue, nextNum) => currentValue + nextNum, 0);
+};
+
+// average
+Array.prototype.average = function () {
+  return this.sum() / this.length;
+};
+
+// even
+Array.prototype.even = function () {
+  return this.filter((num) => num % 2 === 0);
+};
+
+// odd
+Array.prototype.odd = function () {
+  return this.filter((num) => num % 2 !== 0);
+};
+
 // Test function: insert test functions here
 function test() {
-  console.log(
-    whichIsLarger(
-      () => 5,
-      () => 10
-    ), // ➞ "g"
-
-    whichIsLarger(
-      () => 25,
-      () => 25
-    ), // ➞ "neither"
-
-    whichIsLarger(
-      () => 505050,
-      () => 5050
-    ) // ➞ "f"
-  );
+  console.log(numbers.average());
 }
 
 test();
