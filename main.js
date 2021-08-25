@@ -1468,9 +1468,22 @@ Array.prototype.odd = function () {
   return this.filter((num) => num % 2 !== 0);
 };
 
+/**
+ * Ip to Int32
+ * @param {string} ip
+ * @returns ip address written as a 32-bit number
+ */
+const ipToInt32 = (ip) => {
+  const splitIp = ip.split('.');
+
+  return splitIp.reduce((acc, cur) => console.log(acc * 256 + +cur), 0);
+};
+
 // Test function: insert test functions here
 function test() {
-  console.log(numbers.average());
+  console.log(
+    ipToInt32('128.32.10.1') // 2149583361
+  );
 }
 
 test();
