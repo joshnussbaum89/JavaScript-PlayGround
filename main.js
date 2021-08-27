@@ -1479,11 +1479,37 @@ const ipToInt32 = (ip) => {
   return splitIp.reduce((acc, cur) => console.log(acc * 256 + +cur), 0);
 };
 
-// Test function: insert test functions here
-function test() {
-  console.log(
-    ipToInt32('128.32.10.1') // 2149583361
-  );
+/**
+ * Typing
+ * @param {string} text
+ * @param {number} speed - typing speed in ms
+ * @description Create and render letters to DOM creating a 'typewriter' effect
+ */
+function typing(text, speed) {
+  let textArr = [...text];
+  let wordContainer = document.querySelector('.container');
+
+  function createLetter(container, char) {
+    // create a span for each letter and render to DOM
+    let letter = document.createElement('span');
+    letter.innerText = char;
+    letter.classList.add('letter');
+    container.appendChild(letter);
+
+    // find last letter and add cursor to right hand side
+    let lastLetter = container.lastElementChild;
+    lastLetter.classList.add('last-letter');
+    lastLetter.previousElementSibling.classList.remove('last-letter');
+  }
+
+  for (let i = 0; i < textArr.length; i++) {
+    setTimeout(() => {
+      createLetter(wordContainer, textArr[i]);
+    }, i * speed);
+  }
 }
 
-test();
+// Test function: insert test functions here
+function test() {
+  console.log();
+}
