@@ -1509,7 +1509,74 @@ function typing(text, speed) {
   }
 }
 
-// Test function: insert test functions here
-function test() {
-  console.log();
+/**
+ * Rank
+ * @param {string} st
+ * @param {array} we
+ * @param {number} n
+ * @returns winning name score
+ */
+function rank(st, we, n) {
+  if (st.length === 0) return 'No participants';
+  if (n > we.length) return 'Not enough participants';
+
+  const alphabetObj = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5,
+    f: 6,
+    g: 7,
+    h: 8,
+    i: 9,
+    j: 10,
+    k: 11,
+    l: 12,
+    m: 13,
+    n: 14,
+    o: 15,
+    p: 16,
+    q: 17,
+    r: 18,
+    s: 19,
+    t: 20,
+    u: 21,
+    v: 22,
+    w: 23,
+    x: 24,
+    y: 25,
+  };
+  let names = st.split(',');
+  let lettersArr = [];
+  let nameLength;
+
+  for (let i = 0; i < names.length; i++) {
+    lettersArr.push(names[i].toLowerCase().split(''));
+  }
+
+  for (let i = 0; i < lettersArr.length; i++) {
+    nameLength = lettersArr[i].length;
+    lettersArr[i] = lettersArr[i].reduce((curr, next) => {
+      return (curr += alphabetObj[next]);
+    }, 0);
+  }
+
+  let som = lettersArr.map((num) => num + nameLength);
+  let finalScores = [];
+
+  for (let i = 0; i < som.length; i++) {
+    finalScores.push({ name: names[i], score: som[i] * we[n] });
+  }
+  let sortedScores = finalScores.sort((a, b) => b.score - a.score);
+
+  return sortedScores[0].name;
 }
+
+console.log(
+  rank(
+    'Madison,Ethan,Avery,William,Noah,Naoh,Alexander',
+    [6, 1, 2, 3, 5, 2, 5],
+    4
+  ) // 'Noah'
+);
