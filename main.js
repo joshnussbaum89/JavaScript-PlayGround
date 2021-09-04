@@ -1573,10 +1573,21 @@ function rank(st, we, n) {
   return sortedScores[0].name;
 }
 
+/**
+ * Auto-Complete
+ * @param {string} input
+ * @param {array} dictionary
+ * @returns array of matched items
+ */
+function autocomplete(input, dictionary) {
+  let onlyLettersString = input.replace(/[^a-z]/gi, '');
+  let matchedWords = [...dictionary].filter((word) =>
+    word.toLowerCase().includes(onlyLettersString.toLowerCase())
+  );
+
+  return matchedWords.length > 5 ? matchedWords.slice(0, 5) : matchedWords;
+}
+
 console.log(
-  rank(
-    'Madison,Ethan,Avery,William,Noah,Naoh,Alexander',
-    [6, 1, 2, 3, 5, 2, 5],
-    4
-  ) // 'Noah'
+  autocomplete('ai!@#$', ['airplane', 'airport', 'apple', 'ball']) // = ['airplane','airport']
 );
