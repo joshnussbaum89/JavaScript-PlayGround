@@ -1588,6 +1588,43 @@ function autocomplete(input, dictionary) {
   return matchedWords.length > 5 ? matchedWords.slice(0, 5) : matchedWords;
 }
 
+function oddsVsEvens(num) {
+  const numArray = [...num.toString()].map((n) => +n);
+  const evensSum = numArray
+    .filter((n) => n % 2 === 0)
+    .reduce((acc, next) => acc + next, 0);
+  const oddsSum = numArray
+    .filter((n) => n % 2 !== 0)
+    .reduce((acc, next) => acc + next, 0);
+
+  return evensSum > oddsSum ? 'even' : evensSum === oddsSum ? 'equal' : 'odd';
+}
+
+function binary(decimal) {
+  if (decimal === 0) return '0';
+
+  let quotient = decimal;
+  let binaryString = '';
+
+  while (quotient !== 0) {
+    if (quotient % 2 !== 0) {
+      binaryString += '1';
+    } else {
+      binaryString += '0';
+    }
+    quotient = Math.floor(quotient / 2);
+  }
+
+  return [...binaryString].reverse().join('');
+}
+
 console.log(
-  autocomplete('ai!@#$', ['airplane', 'airport', 'apple', 'ball']) // = ['airplane','airport']
+  binary(1), // ➞ "1"
+  // // 1*1 = 1
+
+  binary(5), // ➞ "101"
+  // 1*1 + 1*4 = 5
+
+  binary(10) // ➞ "1010"
+  // 1*2 + 1*8 = 10
 );
