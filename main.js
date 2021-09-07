@@ -1588,6 +1588,11 @@ function autocomplete(input, dictionary) {
   return matchedWords.length > 5 ? matchedWords.slice(0, 5) : matchedWords;
 }
 
+/**
+ * Odds vs. Evens
+ * @param {number} num
+ * @returns 'even' if the even sum is higher, 'odd' if odd sum is higher, 'equal' if sums are equal
+ */
 function oddsVsEvens(num) {
   const numArray = [...num.toString()].map((n) => +n);
   const evensSum = numArray
@@ -1600,6 +1605,11 @@ function oddsVsEvens(num) {
   return evensSum > oddsSum ? 'even' : evensSum === oddsSum ? 'equal' : 'odd';
 }
 
+/**
+ * Binary
+ * @param {number} decimal
+ * @returns Decimal number as a binary string
+ */
 function binary(decimal) {
   if (decimal === 0) return '0';
 
@@ -1618,13 +1628,30 @@ function binary(decimal) {
   return [...binaryString].reverse().join('');
 }
 
-console.log(
-  binary(1), // ➞ "1"
-  // // 1*1 = 1
+/**
+ * Simple Comp
+ * @param {array} arr1
+ * @param {array} arr2
+ * @returns true or false if arr1 contains the square root of numbers in arr2
+ */
+const simpleComp = (arr1, arr2) => {
+  if (arr1 === null || arr2 === null) return false;
+  if (arr1.length !== arr2.length) return false;
 
-  binary(5), // ➞ "101"
-  // 1*1 + 1*4 = 5
+  let absoluteArrayValues = [...arr1].map((num) => Math.abs(num));
+  let boolArr = [];
 
-  binary(10) // ➞ "1010"
-  // 1*2 + 1*8 = 10
-);
+  arr2.forEach((number) => {
+    if (absoluteArrayValues.includes(Math.sqrt(number))) {
+      let sqrtNumIndex = absoluteArrayValues.indexOf(Math.sqrt(number));
+      absoluteArrayValues.splice(sqrtNumIndex, 1);
+      boolArr.push(true);
+    } else {
+      boolArr.push(false);
+    }
+  });
+
+  return !boolArr.includes(false);
+};
+
+console.log(simpleComp([42, 42], [42, 42])); // false
