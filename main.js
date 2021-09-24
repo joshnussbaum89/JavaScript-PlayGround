@@ -1655,3 +1655,4 @@ const simpleComp = (arr1, arr2) => {
 };
 
 console.log(simpleComp([42, 42], [42, 42])); // false
+console.log('hey');
