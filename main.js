@@ -1654,19 +1654,4 @@ const simpleComp = (arr1, arr2) => {
   return !boolArr.includes(false);
 };
 
-// Takes an array of names and returns first and last name initials 
-function returnFirstAndLastNameInitials(names) {
-  return [...names].map(name => {
-    const firtAndLastName = name.split(' ')
-    const firstNameInitial = firtAndLastName[0][0]
-    const lastNameInitial = firtAndLastName[1][0]
-
-    return `${firstNameInitial}. ${lastNameInitial}.`
-  })
-}
-
-console.log(
-  initialize(["Stephen Hawking"]), // ➞ ["S. H."]
-  initialize(["Harry Potter", "Ron Weasley"]), // ➞ ["H. P.", "R. W."]
-  initialize(["Sherlock Holmes", "John Watson", "Irene Adler"]) // ➞ ["S. H.", "J. W.", "I. A."]
-);
+console.log(simpleComp([42, 42], [42, 42])); // false
