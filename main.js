@@ -1654,7 +1654,7 @@ const simpleComp = (arr1, arr2) => {
   return !boolArr.includes(false);
 };
 
-// Takes an array of names and returns first and last name initials 
+// Takes an [array] of names and returns first and last name initials
 function returnFirstAndLastNameInitials(names) {
   return [...names].map(name => {
     const firtAndLastName = name.split(' ')
