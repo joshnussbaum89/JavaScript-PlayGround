@@ -1665,8 +1665,32 @@ function returnFirstAndLastNameInitials(names) {
   })
 }
 
+// Creates a message that indicates who liked a post
+function likes(names) {
+  if ( names.length === 0 ) return `no one likes this`
+  if ( names.length === 1 ) return `${names[0]} likes this`
+  if ( names.length === 2 ) return `${names[0]} and ${names[1]} like this`
+  if ( names.length === 3 ) return `${names[0]}, ${names[1]} and ${names[2]} like this`
+
+  return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+}
+
+// re-order words based on hidden number inside each word
+function order(words) {
+  if (words === '') return ''
+
+  let eachIndividualWord = words.split(' ')
+  let wordsInOrder       = new Array(eachIndividualWord.length).fill('')
+
+  eachIndividualWord
+    .map(word => /\d/.exec(word))
+    .forEach(word => wordsInOrder.splice(word[0] - 1, 1, word.input))
+
+  return wordsInOrder.join(' ')
+}
+
 console.log(
-  initialize(["Stephen Hawking"]), // ➞ ["S. H."]
-  initialize(["Harry Potter", "Ron Weasley"]), // ➞ ["H. P.", "R. W."]
-  initialize(["Sherlock Holmes", "John Watson", "Irene Adler"]) // ➞ ["S. H.", "J. W.", "I. A."]
+  order("is2 Thi1s T4est 3a"), // "Thi1s is2 3a T4est"
+  order("4of Fo1r pe6ople g3ood th5e the2"), // "Fo1r the2 g3ood 4of th5e pe6ople"
+  order(""), // "", "empty input should return empty string"
 );
