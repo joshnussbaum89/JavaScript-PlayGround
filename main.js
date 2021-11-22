@@ -1689,8 +1689,48 @@ function order(words) {
   return wordsInOrder.join(' ')
 }
 
+// Abbreviate word ex/ "accessibility" --> "a11y"
+function abbreviate(string) {
+  const wordsWithoutDashes = string.replace('-', ' ').split(' ')
+  let wordWithDash         = ''
+  let abbreviatedWord      = ''
+  let firstLetter
+  let lastLetter
+  let remainingLetters
+
+  if (wordsWithoutDashes.length > 1) {
+    let counter = 1
+
+    wordsWithoutDashes.forEach(word => {
+      firstLetter      = word[0]
+      lastLetter       = word[word.length - 1]
+      remainingLetters = word.length - 2
+
+      wordWithDash += `${firstLetter}${remainingLetters}${lastLetter}`
+
+      if (counter !== wordsWithoutDashes.length) {
+        wordWithDash += '-'
+        counter++
+      }
+    })
+
+    return wordWithDash
+  } else {
+      wordsWithoutDashes.forEach(word => {
+        firstLetter      = word[0]
+        lastLetter       = word[word.length - 1]
+        remainingLetters = word.length - 2
+
+        abbreviatedWord += `${firstLetter}${remainingLetters}${lastLetter}`
+      })
+
+    return abbreviatedWord
+  }
+}
+
 console.log(
-  order("is2 Thi1s T4est 3a"), // "Thi1s is2 3a T4est"
-  order("4of Fo1r pe6ople g3ood th5e the2"), // "Fo1r the2 g3ood 4of th5e pe6ople"
-  order(""), // "", "empty input should return empty string"
+  abbreviate("internationalization"), // "i18n"
+  abbreviate("accessibility"),        // "a11y"
+  abbreviate("Accessibility"),        // "A11y"
+  abbreviate("elephant-ride"),         // "e6t-r2e"
 );
