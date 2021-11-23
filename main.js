@@ -1665,8 +1665,72 @@ function returnFirstAndLastNameInitials(names) {
   })
 }
 
+// Creates a message that indicates who liked a post
+function likes(names) {
+  if ( names.length === 0 ) return `no one likes this`
+  if ( names.length === 1 ) return `${names[0]} likes this`
+  if ( names.length === 2 ) return `${names[0]} and ${names[1]} like this`
+  if ( names.length === 3 ) return `${names[0]}, ${names[1]} and ${names[2]} like this`
+
+  return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+}
+
+// re-order words based on hidden number inside each word
+function order(words) {
+  if (words === '') return ''
+
+  let eachIndividualWord = words.split(' ')
+  let wordsInOrder       = new Array(eachIndividualWord.length).fill('')
+
+  eachIndividualWord
+    .map(word => /\d/.exec(word))
+    .forEach(word => wordsInOrder.splice(word[0] - 1, 1, word.input))
+
+  return wordsInOrder.join(' ')
+}
+
+// Abbreviate word ex/ "accessibility" --> "a11y"
+function abbreviate(string) {
+  const wordsWithoutDashes = string.replace('-', ' ').split(' ')
+  let wordWithDash         = ''
+  let abbreviatedWord      = ''
+  let firstLetter
+  let lastLetter
+  let remainingLetters
+
+  if (wordsWithoutDashes.length > 1) {
+    let counter = 1
+
+    wordsWithoutDashes.forEach(word => {
+      firstLetter      = word[0]
+      lastLetter       = word[word.length - 1]
+      remainingLetters = word.length - 2
+
+      wordWithDash += `${firstLetter}${remainingLetters}${lastLetter}`
+
+      if (counter !== wordsWithoutDashes.length) {
+        wordWithDash += '-'
+        counter++
+      }
+    })
+
+    return wordWithDash
+  } else {
+      wordsWithoutDashes.forEach(word => {
+        firstLetter      = word[0]
+        lastLetter       = word[word.length - 1]
+        remainingLetters = word.length - 2
+
+        abbreviatedWord += `${firstLetter}${remainingLetters}${lastLetter}`
+      })
+
+    return abbreviatedWord
+  }
+}
+
 console.log(
-  initialize(["Stephen Hawking"]), // ➞ ["S. H."]
-  initialize(["Harry Potter", "Ron Weasley"]), // ➞ ["H. P.", "R. W."]
-  initialize(["Sherlock Holmes", "John Watson", "Irene Adler"]) // ➞ ["S. H.", "J. W.", "I. A."]
+  abbreviate("internationalization"), // "i18n"
+  abbreviate("accessibility"),        // "a11y"
+  abbreviate("Accessibility"),        // "A11y"
+  abbreviate("elephant-ride"),         // "e6t-r2e"
 );
